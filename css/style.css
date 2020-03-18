@@ -2172,3 +2172,10 @@ blockquote {
 }
 
 
+.color-text-danger-hma {
+  color: #ed1d25 !important
+}
+
+.border-ra-hma {
+  border-radius: 4px !important;
+}
