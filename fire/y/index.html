@@ -52,18 +52,6 @@
           </div>
         </div>
         <ul class="navbar-nav">
-            
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="scrollToSkills()">
-                  Skills
-                </a>
-              </li>
-
-              <li class="nav-item">
-                  <a class="nav-link" href="#" onclick="scrollToComingSoon()">
-                    Brevemente
-                  </a>
-                </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="scrollToProjects()">
                   Meus trabalhos
@@ -202,37 +190,11 @@
                 </div>
               </div>
         </div>
-
-
-        <div class="progress-container progress-primary">
-            <span class="progress-badge"><i class="fas fa-code-branch"></i> Firebase(Cloud Firestore, Cloud Functions, Autenticação, Hosting, Cloud Storage, Realtime Database ) </span>
-            
-            <div class="progress">
-              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                <span class="progress-value">80%</span>
-              </div>
-            </div>
-      </div>
-
-
-      <div class="progress-container progress-primary">
-          <span class="progress-badge"><i class="fas fa-rocket"></i> Automação de Marketing Digital </span>
-          
-          <div class="progress">
-            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-              <span class="progress-value">90%</span>
-            </div>
-          </div>
-    </div>
               <br>
               
             </div>
-            
           </div>
-          <div class="col-md-6">
-              <img src="assets/img/francisco_portfolio_side.png">
-            </div>
-        <div class="section brevemente">
+        <div class="section">
           <div class="container">
             <div class="title">
               <h3>O que vem a seguir?</h3>
@@ -240,23 +202,23 @@
             <div class="row justify-content-between align-items-center">
               <div class="col-lg-5 mb-5 mb-lg-0 ">
                 <h1 class="text-white font-weight-light">Brevemente</h1>
-                <p class="text-white mt-4">Brevemente estarei dando cursos online de programação e Automação de Marketing digital, os cursos serão grátis e a minha ideia inicial é disponibiliza-los em forma de E-books. Aguarde.</p>
-                <button id="btnGoogle" class="btn btn-warning mt-4 btn-neutral">
-                    Eu quero ser notificado <img src="assets/img/google.svg">
+                <p class="text-white mt-4">Brevemente estarei dando cursos online de programação e Automação de Marketing digital, os cursos serão grátis e a minha ideia inicial é disponibiliza-los em forma de E-books. Aguardem.</p>
+                <button class="btn btn-warning mt-4" data-toggle="modal" data-target="#myModal2">
+                    Eu quero ser notificado
                   </button>
-                  
+                
               </div>
               <div class="col-lg-6">
                 <div id="carouselExampleControls" class="carousel slide">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img class="d-block w-100" src="assets/img/francisco_portfolio_1.png" alt="First slide">
+                      <img class="d-block w-100" src="assets/img/denys.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="assets/img/francisco_portfolio_4.png" alt="Second slide">
+                      <img class="d-block w-100" src="assets/img/fabien-bazanegue.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="assets/img/francisco_portfolio_3.png" alt="Third slide">
+                      <img class="d-block w-100" src="assets/img/mark-finn.jpg" alt="Third slide">
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -283,71 +245,20 @@
           <div class="container text-center">
             <div class="row">
               <div class="col-sm-6">
-                <a href="https://todoportfoliofirebaseauth.firebaseapp.com/" target="_blank">
-                  <h6>Angular e Firebase:   um quadro de tarrefas e drag drop</h6>
-                  <img src="assets/img/francisco_portfolio_pwa.png" alt="Image" class="img-raised">
+                <a href="examples/landing-page.html">
+                  <img src="assets/img/landing-page.png" alt="Image" class="img-raised">
                 </a>
-                <a href="https://todoportfoliofirebaseauth.firebaseapp.com/" class="btn btn-simple btn-primary btn-round">Ver app</a>
+                <a href="examples/landing-page.html" class="btn btn-simple btn-primary btn-round">View Landing Page</a>
               </div>
               <div class="col-sm-6">
-                
-                <a href="https://angularfireauthfji.firebaseapp.com/">
-                  <h6>Angular e Firebase: Autenticação do usuário</h6>
-                  <img src="assets/img/francisco_portfolio_authangular_firebase.png" alt="Image" class="img-raised">
+                <a href="examples/profile-page.html">
+                  <img src="assets/img/profile-page.png" alt="Image" class="img-raised">
                 </a>
-                <a target="_blank" href="https://angularfireauthfji.firebaseapp.com/" class="btn btn-simple btn-primary btn-round">Ver app</a>
-    
-              </div>
-
-
-
-              <div class="col-sm-6">
-                
-                <a href="https://angularfireauthfji.firebaseapp.com/">
-                  <h6>Angular e Firebase: Autenticação do usuário</h6>
-                  <img src="assets/img/francisco_portfolio_firebase_multiphotos.png" alt="Image" class="img-raised">
-                </a>
-                <a target="_blank" href="https://angularfireauthfji.firebaseapp.com/" class="btn btn-simple btn-primary btn-round">Ver app</a>
-    
-              </div>
-
-
-              <div class="col-sm-6">
-                
-                <a href="https://angularfirecrudfji.firebaseapp.com">
-                  <h6>Angular e Firebase: Um simples CRUD</h6>
-                  <img src="assets/img/francisco_portfolio_simplecrud_firebase.png" alt="Image" class="img-raised">
-                </a>
-                <a target="_blank" href="https://angularfirecrudfji.firebaseapp.com" class="btn btn-simple btn-primary btn-round">Ver app</a>
-    
-              </div>
-
-
-
-              <div class="col-sm-6">
-                
-                <a target="_blank" href="https://dadostemplate.firebaseapp.com">
-                  <h6>VueJs calendário e Firebase (CRUD)</h6>
-                  <img src="assets/img/vuejsfirebase_calendar_portfolio.png" alt="Image" class="img-raised">
-                </a>
-                <a target="_blank" href="https://dadostemplate.firebaseapp.com" class="btn btn-simple btn-primary btn-round">Ver app</a>
-    
-              </div>
-
-              <div class="col-sm-6">
-                
-                <a target="_blank" href="https://reactfirebasetodofji.firebaseapp.com/">
-                  <h6>Um projecto completo em Reactjs e Firebase</h6>
-                  <img src="assets/img/react_firebase_todoapp_portfolio_fji.png" alt="Image" class="img-raised">
-                </a>
-                <a target="_blank" href="https://reactfirebasetodofji.firebaseapp.com/" class="btn btn-simple btn-primary btn-round">Ver app</a>
-    
+                <a href="examples/profile-page.html" class="btn btn-simple btn-primary btn-round">View Profile Page</a>
               </div>
             </div>
           </div>
         </div>
-
-        
       <div class="section section-signup">
         <div class="container">
           <div class="squares square-1"></div>
@@ -359,9 +270,9 @@
               <h3 class="display-3 text-white">Um pouco sobre mim e 
                 <span class="text-white">o meu trabalho</span>
               </h3>
-              <p class="text-white mb-3">Eu sou Francisco Jaime Inoque, mas prefiro que me chamem, Francisco Inoque, Francisco ou Inoque. Sou Desenvolvedor JavaScript há 3 anos, o meu grande sonho é fazer parte de um grande projeto que envolve uma arquitetura robusta. Eu sou tipo esponjas quando se trata de aprendizagem, aprendo todos os dias, com tudo e todos em minha volta. Para já eu gostaria de fazer parte de uma equipe(empresa), porque do momento trabalho como freelancer. Sou divertido, focado, noturno e as vezes gosto de ficar sozinho. As minhas fraquezas são, não resisto a fome, filme e escrever frases.</p>
+              <p class="text-white mb-3">Eu sou Francisco Jaime Inoque mas prefiro que me chamem, Francisco Inoque, Francisco ou Inoque. Sou Desenvolvedor JavaScript há 3 anos, meu grande sonho é fazer de um grande projecto que envolve uma arquitetura robusta. Eu sou tipo esponjas quando se trata de aprendizado, aprendo todos os dias, com tudo e todos em minha volta. Para já eu gostaria de fazer de uma equipe(empresa), porque do momento trabalho como freelancer. Sou devertido, focado, noturno e as vezes gosto de ficar sozinho. Minhas fraquezas são, fome, filme e escrever frases. </p>
               <div class="btn-wrapper">
-                  <script type="text/javascript" src="//speedingup.org/mautic/form/generate.js?id=10"></script>
+                <a href="examples/register-page.html" class="btn btn-info">Meu CV</a>
               </div>
             </div>
             <div class="col-lg-6 mb-lg-auto">
@@ -372,7 +283,7 @@
                 </div>
                 <div class="card-body">
                   <div class="form">
-                    <script type="text/javascript" src="//speedingup.org/mautic/form/generate.js?id=8"></script>
+                      <script type="text/javascript" src="//savanapoint.com/savanapoint_marketing/form/generate.js?id=2"></script>
                   </div>
                 </div>
                 
@@ -391,7 +302,7 @@
               <div class="card-body">
                   <div class="form">
               <h4 class="description">
-                <script type="text/javascript" src="//speedingup.org/mautic/form/generate.js?id=9"></script>
+                  <script type="text/javascript" src="//savanapoint.com/savanapoint_marketing/form/generate.js?id=3"></script>
                   <a target="_blank" id="twitter" class="btn btn-icon btn-twitter btn-round btn-lg" data-toggle="tooltip" data-original-title="Me siga no twitter" href="https://twitter.com/InoqueJaime" >
                     <i class="fab fa-twitter"></i>
                   </a>
@@ -433,7 +344,54 @@
 
 
 
-    
+    <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header justify-content-center">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <i class="tim-icons icon-simple-remove text-white"></i>
+              </button>
+              <div class="text-muted text-center ml-auto mr-auto">
+                <h3 class="mb-0">Sign in with</h3>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="btn-wrapper text-center">
+                <button id="btnGoogle" class="btn btn-neutral btn-icon">
+                  <img src="assets/img/google.svg">
+                </button>
+              </div>
+              <div class="text-center text-muted mb-4 mt-3">
+                <small>Or sign in with credentials</small>
+              </div>
+              <form role="form" id="registerForm">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="tim-icons icon-email-85"></i>
+                      </span>
+                    </div>
+                    <input id="email" class="form-control" placeholder="Seu email" type="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="tim-icons icon-key-25"></i>
+                      </span>
+                    </div>
+                    <input id="password" class="form-control" placeholder="Criar uma senha" type="password">
+                  </div>
+                </div>
+                
+                <div class="text-center">
+                  <button id="btnRegisterWithEmail" type="button" class="btn btn-primary my-4">Sign in</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
