@@ -11,7 +11,18 @@
     transform: translateX(-10px);
   }
 }
+input {
+  background: transparent !important;
+}
 
+textarea {
+  background: transparent !important;
+}
+
+.mauticform-errormsg {
+  color: #fd5d93 !important;
+  font-weight: bold;
+}
 :root {
   --blue: #5e72e4;
   --indigo: #5603ad;
