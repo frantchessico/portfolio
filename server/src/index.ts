@@ -111,7 +111,7 @@ const resendFromEmail =
   "Francisco Inoque <hello@franciscoinoque.site>";
 const adminNotificationEmail =
   process.env.ADMIN_NOTIFICATION_EMAIL ?? "jaimeinoque20@gmail.com";
-const corsAllowedOrigins = (
+const rawCorsAllowedOrigins = (
   process.env.CORS_ALLOWED_ORIGINS ??
   "http://localhost:3000,http://127.0.0.1:3000"
 )
@@ -125,6 +125,13 @@ const portfolioUrl =
   process.env.PORTFOLIO_URL ??
   "https://portfolio-74p4e5ouz-francisco-inoques-projects-a49c7047.vercel.app/";
 const countryNames = new Intl.DisplayNames(["en"], { type: "region" });
+const corsAllowedOrigins = buildAllowedOrigins([
+  ...rawCorsAllowedOrigins,
+  portfolioUrl,
+  siteUrl,
+  "https://franciscoinoque.site",
+  "https://www.franciscoinoque.site",
+]);
 
 let mongoClientPromise: Promise<MongoClient> | undefined;
 
@@ -170,6 +177,46 @@ function getCountryNameFromCode(countryCode: string): string {
   }
 }
 
+function createDomainVariants(origin: string): string[] {
+  try {
+    const url = new URL(origin);
+    const host = url.hostname;
+    const isLocalhost =
+      host === "localhost" ||
+      host === "127.0.0.1" ||
+      host === "[::1]" ||
+      host.endsWith(".localhost");
+
+    if (isLocalhost) {
+      return [url.origin];
+    }
+
+    const variants = new Set<string>([url.origin]);
+
+    if (host.startsWith("www.")) {
+      variants.add(`${url.protocol}//${host.slice(4)}${url.port ? `:${url.port}` : ""}`);
+    } else {
+      variants.add(`${url.protocol}//www.${host}${url.port ? `:${url.port}` : ""}`);
+    }
+
+    return Array.from(variants);
+  } catch {
+    return [];
+  }
+}
+
+function buildAllowedOrigins(origins: string[]): string[] {
+  const normalizedOrigins = new Set<string>();
+
+  for (const origin of origins) {
+    for (const variant of createDomainVariants(origin)) {
+      normalizedOrigins.add(variant);
+    }
+  }
+
+  return Array.from(normalizedOrigins);
+}
+
 function isAllowedOrigin(origin: string): boolean {
   if (!origin) {
     return false;
@@ -182,7 +229,11 @@ function isAllowedOrigin(origin: string): boolean {
   try {
     const { hostname } = new URL(origin);
 
-    return hostname.endsWith(".vercel.app");
+    return (
+      hostname.endsWith(".vercel.app") ||
+      hostname === "franciscoinoque.site" ||
+      hostname === "www.franciscoinoque.site"
+    );
   } catch {
     return false;
   }
