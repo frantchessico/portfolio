@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Database, GitBranch, Layout, Server, Wrench } from "lucide-react";
+import { Database, Layout, Server, Wrench } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const containerVariants = {
@@ -35,11 +35,6 @@ export default function Skills() {
       ...t.skills.groups[3],
       icon: <Wrench className="text-primary" size={22} />,
     },
-    {
-      id: "enterprise-integration",
-      ...t.skills.groups[4],
-      icon: <GitBranch className="text-primary" size={22} />,
-    },
   ];
 
   return (
@@ -58,7 +53,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6"
         >
           {skillGroups.map((group) => (
             <motion.div

@@ -147,18 +147,28 @@ const messages = {
             "Real-time systems",
           ],
         },
-        {
-          title: "Enterprise Integration",
-          skills: [
-            "Oracle SOA Suite",
-            "Oracle Service Bus (OSB)",
-            "BPEL",
-            "BPM",
-            "Systems Integration",
-            "Functional Analysis",
-            "Technical Analysis",
-          ],
-        },
+      ],
+    },
+    enterpriseIntegration: {
+      ariaLabel: "Enterprise integration capabilities",
+      eyebrow: "Enterprise integration",
+      titleTop: "Built for",
+      titleBottom: "integration",
+      description:
+        "Hands-on experience connecting enterprise workflows, orchestrating business processes, and translating legacy complexity into reliable digital operations.",
+      spotlightLabel: "Capability map",
+      spotlightTitle: "Enterprise-grade orchestration",
+      spotlightDescription:
+        "From process automation and service orchestration to functional and technical analysis, this layer helps complex systems communicate, scale, and stay governable.",
+      stackLabel: "Core capabilities",
+      items: [
+        "Oracle SOA Suite",
+        "Oracle Service Bus (OSB)",
+        "BPEL",
+        "BPM",
+        "Systems Integration",
+        "Functional Analysis",
+        "Technical Analysis",
       ],
     },
     projects: {
@@ -468,18 +478,28 @@ const messages = {
             "Sistemas em tempo real",
           ],
         },
-        {
-          title: "Integração Enterprise",
-          skills: [
-            "Oracle SOA Suite",
-            "Oracle Service Bus (OSB)",
-            "BPEL",
-            "BPM",
-            "Integração de Sistemas",
-            "Análise Funcional",
-            "Análise Técnica",
-          ],
-        },
+      ],
+    },
+    enterpriseIntegration: {
+      ariaLabel: "Capacidades de integração enterprise",
+      eyebrow: "Integração enterprise",
+      titleTop: "Feito para",
+      titleBottom: "integração",
+      description:
+        "Experiência prática conectando workflows enterprise, orquestrando processos de negócio e traduzindo complexidade legada em operações digitais confiáveis.",
+      spotlightLabel: "Mapa de capacidade",
+      spotlightTitle: "Orquestração em nível enterprise",
+      spotlightDescription:
+        "De automação de processos e orquestração de serviços até análise funcional e técnica, essa camada ajuda sistemas complexos a se comunicarem, escalarem e permanecerem governáveis.",
+      stackLabel: "Capacidades centrais",
+      items: [
+        "Oracle SOA Suite",
+        "Oracle Service Bus (OSB)",
+        "BPEL",
+        "BPM",
+        "Integração de Sistemas",
+        "Análise Funcional",
+        "Análise Técnica",
       ],
     },
     projects: {
