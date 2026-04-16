@@ -6,6 +6,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig(async ({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const isProduction = mode === "production";
   const rawPort = env.PORT || "3000";
   const port = Number(rawPort);
 
@@ -23,7 +24,7 @@ export default defineConfig(async ({ mode }) => {
     plugins: [
       react(),
       tailwindcss(),
-      runtimeErrorOverlay(),
+      ...(!isProduction ? [runtimeErrorOverlay()] : []),
       ...(enableReplitPlugins &&
       env.NODE_ENV !== "production" &&
       env.REPL_ID !== undefined

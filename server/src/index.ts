@@ -84,6 +84,13 @@ const resendFromEmail =
   "Francisco Inoque <hello@franciscoinoque.site>";
 const adminNotificationEmail =
   process.env.ADMIN_NOTIFICATION_EMAIL ?? "jaimeinoque20@gmail.com";
+const corsAllowedOrigins = (
+  process.env.CORS_ALLOWED_ORIGINS ??
+  "http://localhost:3000,http://127.0.0.1:3000"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 const siteUrl =
   process.env.SITE_URL ??
   "https://savanapoint-francisco-inoque.kwbhel.easypanel.host/";
@@ -131,6 +138,37 @@ function getCountryNameFromCode(countryCode: string): string {
   } catch {
     return "Unknown";
   }
+}
+
+function isAllowedOrigin(origin: string): boolean {
+  if (!origin) {
+    return false;
+  }
+
+  if (corsAllowedOrigins.includes(origin)) {
+    return true;
+  }
+
+  try {
+    const { hostname } = new URL(origin);
+
+    return hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
+function applyCors(req: Request, res: Response): void {
+  const origin = readHeaderValue(req, "origin");
+
+  if (!isAllowedOrigin(origin)) {
+    return;
+  }
+
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.setHeader("Vary", "Origin");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 }
 
 function resolveLocation(req: Request): SubmissionLocation {
@@ -396,6 +434,15 @@ function createApp() {
   const app = express();
 
   app.set("trust proxy", true);
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    applyCors(req, res);
+
+    if (req.method === "OPTIONS") {
+      return res.status(204).end();
+    }
+
+    return next();
+  });
   app.use(express.json({ limit: "1mb" }));
 
   app.get("/api/health", (_req: Request, res: Response) => {
