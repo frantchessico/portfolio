@@ -177,6 +177,10 @@ function getMongoClient(): Promise<MongoClient> {
     mongoClientPromise = new MongoClient(mongoUri).connect();
   }
 
+  if (!mongoClientPromise) {
+    throw new Error("Failed to initialize MongoDB client.");
+  }
+
   return mongoClientPromise;
 }
 
