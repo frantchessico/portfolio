@@ -8,6 +8,7 @@ import fs from "fs";
 import { MongoClient, type Collection } from "mongodb";
 import path from "path";
 import { Resend } from "resend";
+import { randomUUID } from "crypto";
 import { fileURLToPath } from "url";
 
 type Locale = "en" | "pt-BR";
@@ -66,8 +67,11 @@ interface CvDownloadLeadPayload {
 }
 
 interface CvDownloadLeadRecord extends CvDownloadLeadPayload {
+  downloadToken: string;
   status: "pending_email" | "email_sent";
   confirmationEmailSentAt?: Date;
+  downloadsCount?: number;
+  lastDownloadedAt?: Date;
 }
 
 interface ConfirmationContent {
@@ -117,6 +121,9 @@ const corsAllowedOrigins = (
 const siteUrl =
   process.env.SITE_URL ??
   "https://savanapoint-francisco-inoque.kwbhel.easypanel.host/";
+const portfolioUrl =
+  process.env.PORTFOLIO_URL ??
+  "https://portfolio-74p4e5ouz-francisco-inoques-projects-a49c7047.vercel.app/";
 const countryNames = new Intl.DisplayNames(["en"], { type: "region" });
 
 let mongoClientPromise: Promise<MongoClient> | undefined;
@@ -451,8 +458,14 @@ function buildCvLeadAdminEmailText(lead: CvDownloadLeadPayload): string {
   ].join("\n");
 }
 
-function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationContent {
-  const cvUrl = new URL("francisco-inoque-cv.pdf", siteUrl).toString();
+function buildCvConfirmationContent(
+  lead: CvDownloadLeadPayload,
+  downloadToken: string,
+): ConfirmationContent {
+  const downloadUrl = new URL(
+    `?cv=${encodeURIComponent(downloadToken)}`,
+    portfolioUrl,
+  ).toString();
 
   if (lead.locale === "pt-BR") {
     return {
@@ -462,9 +475,9 @@ function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationCo
           <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
             <h1 style="margin:0 0 16px;font-size:24px;">Obrigado pelo interesse.</h1>
             <p style="margin:0 0 16px;line-height:1.7;color:#57534e;">
-              Recebemos o seu pedido de CV. Você pode baixar o arquivo pelo botão abaixo sempre que precisar.
+              Recebemos o seu pedido de CV. Ao clicar no botão abaixo, você será levado ao portfólio, o download começará automaticamente e a página voltará para a home.
             </p>
-            <a href="${escapeHtml(cvUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Baixar CV</a>
+            <a href="${escapeHtml(downloadUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Baixar CV</a>
             <p style="margin:20px 0 0;color:#57534e;">Francisco Inoque</p>
           </div>
         </div>
@@ -473,7 +486,7 @@ function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationCo
         "Obrigado pelo interesse.",
         "",
         "Recebemos o seu pedido de CV.",
-        `Baixar CV: ${cvUrl}`,
+        `Baixar CV: ${downloadUrl}`,
         "",
         "Francisco Inoque",
       ].join("\n"),
@@ -487,9 +500,9 @@ function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationCo
         <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
           <h1 style="margin:0 0 16px;font-size:24px;">Thanks for your interest.</h1>
           <p style="margin:0 0 16px;line-height:1.7;color:#57534e;">
-            We received your CV request. You can download the file any time using the button below.
+            We received your CV request. When you click the button below, you will be taken to the portfolio, the download will start automatically, and the page will return to the home view.
           </p>
-          <a href="${escapeHtml(cvUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Download CV</a>
+          <a href="${escapeHtml(downloadUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Download CV</a>
           <p style="margin:20px 0 0;color:#57534e;">Francisco Inoque</p>
         </div>
       </div>
@@ -498,7 +511,7 @@ function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationCo
       "Thanks for your interest.",
       "",
       "We received your CV request.",
-      `Download CV: ${cvUrl}`,
+      `Download CV: ${downloadUrl}`,
       "",
       "Francisco Inoque",
     ].join("\n"),
@@ -587,6 +600,12 @@ function validateCvLeadPayload(payload: CvDownloadLeadPayload): CvLeadValidation
   }
 
   return validationErrors;
+}
+
+function isUuid(value: string): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+    value,
+  );
 }
 
 function createApp() {
@@ -719,13 +738,16 @@ function createApp() {
     try {
       const client = await getMongoClient();
       const collection = getCvLeadCollection(client);
+      const downloadToken = randomUUID();
       const leadRecord: CvDownloadLeadRecord = {
         ...payload,
+        downloadToken,
         status: "pending_email",
+        downloadsCount: 0,
       };
       const insertResult = await collection.insertOne(leadRecord);
       const resend = getResendClient();
-      const confirmation = buildCvConfirmationContent(payload);
+      const confirmation = buildCvConfirmationContent(payload, downloadToken);
 
       await Promise.all([
         resend.emails.send({
@@ -766,6 +788,65 @@ function createApp() {
       return res.status(500).json({
         ok: false,
         message: "Failed to process CV download request.",
+      });
+    }
+  });
+
+  app.get("/api/cv-download/resolve", async (req: Request, res: Response) => {
+    const missing = ensureConfig();
+
+    if (missing.length > 0) {
+      return res.status(503).json({
+        ok: false,
+        message: "CV lead service is not configured yet. Missing environment variables.",
+        missing,
+      });
+    }
+
+    const token =
+      typeof req.query.token === "string" ? req.query.token.trim() : "";
+
+    if (!isUuid(token)) {
+      return res.status(400).json({
+        ok: false,
+        message: "Invalid CV download token.",
+      });
+    }
+
+    try {
+      const client = await getMongoClient();
+      const collection = getCvLeadCollection(client);
+      const lead = await collection.findOne({ downloadToken: token });
+
+      if (!lead) {
+        return res.status(404).json({
+          ok: false,
+          message: "CV download token not found.",
+        });
+      }
+
+      await collection.updateOne(
+        { _id: lead._id },
+        {
+          $set: {
+            lastDownloadedAt: new Date(),
+          },
+          $inc: {
+            downloadsCount: 1,
+          },
+        },
+      );
+
+      return res.status(200).json({
+        ok: true,
+        fileUrl: "/francisco-inoque-cv.pdf",
+      });
+    } catch (error) {
+      console.error("CV token resolve failed:", error);
+
+      return res.status(500).json({
+        ok: false,
+        message: "Failed to resolve CV download token.",
       });
     }
   });
