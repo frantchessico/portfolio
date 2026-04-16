@@ -1,28 +1,6 @@
 import { motion } from "framer-motion";
-import { Layout, Server, Database, Wrench } from "lucide-react";
-
-const skillGroups = [
-  {
-    title: "Frontend",
-    icon: <Layout className="text-primary" size={22} />,
-    skills: ["React", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "jQuery"],
-  },
-  {
-    title: "Backend",
-    icon: <Server className="text-primary" size={22} />,
-    skills: ["Node.js", "Express", "Fastify", "Go", "Python", "Java"],
-  },
-  {
-    title: "Database",
-    icon: <Database className="text-primary" size={22} />,
-    skills: ["MongoDB", "MySQL", "Microsoft SQL Server"],
-  },
-  {
-    title: "Tools & Architecture",
-    icon: <Wrench className="text-primary" size={22} />,
-    skills: ["Docker", "Firebase", "REST APIs", "WebSockets", "Microservices", "Real-time systems"],
-  },
-];
+import { Database, GitBranch, Layout, Server, Wrench } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,14 +13,43 @@ const itemVariants = {
 };
 
 export default function Skills() {
+  const { t } = useI18n();
+  const skillGroups = [
+    {
+      id: "frontend",
+      ...t.skills.groups[0],
+      icon: <Layout className="text-primary" size={22} />,
+    },
+    {
+      id: "backend",
+      ...t.skills.groups[1],
+      icon: <Server className="text-primary" size={22} />,
+    },
+    {
+      id: "database",
+      ...t.skills.groups[2],
+      icon: <Database className="text-primary" size={22} />,
+    },
+    {
+      id: "tools-architecture",
+      ...t.skills.groups[3],
+      icon: <Wrench className="text-primary" size={22} />,
+    },
+    {
+      id: "enterprise-integration",
+      ...t.skills.groups[4],
+      icon: <GitBranch className="text-primary" size={22} />,
+    },
+  ];
+
   return (
-    <section id="skills" aria-label="Skills técnicas" className="py-20 sm:py-28 lg:py-32 bg-secondary/30 relative border-y border-border">
+    <section id="skills" aria-label={t.skills.ariaLabel} className="py-20 sm:py-28 lg:py-32 bg-secondary/30 relative border-y border-border">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-2xl mb-10 sm:mb-16">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">Stack técnica</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">Technical Arsenal</h2>
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.skills.eyebrow}</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">{t.skills.title}</h2>
           <p className="text-base sm:text-lg text-muted-foreground">
-            Uma stack profunda e versátil, escolhida pela sua fiabilidade, escalabilidade e performance.
+            {t.skills.description}
           </p>
         </div>
 
@@ -51,11 +58,11 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6"
         >
           {skillGroups.map((group) => (
             <motion.div
-              key={group.title}
+              key={group.id}
               variants={itemVariants}
               className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-primary/50 transition-colors"
             >

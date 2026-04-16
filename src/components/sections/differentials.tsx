@@ -1,33 +1,6 @@
 import { motion } from "framer-motion";
 import { Zap, Briefcase, Settings, Layers, BrainCircuit } from "lucide-react";
-
-const differentials = [
-  {
-    title: "Production-grade",
-    description: "Constrói produtos reais e escaláveis, não apenas protótipos.",
-    icon: <Zap size={22} />,
-  },
-  {
-    title: "Contexto de negócio",
-    description: "Compreende os objectivos estratégicos e de negócio por trás do software.",
-    icon: <Briefcase size={22} />,
-  },
-  {
-    title: "System design",
-    description: "Experiência profunda em automação e arquitectura de sistemas resilientes.",
-    icon: <Settings size={22} />,
-  },
-  {
-    title: "True fullstack",
-    description: "Domínio do backend, frontend e visão de produto — num só perfil.",
-    icon: <Layers size={22} />,
-  },
-  {
-    title: "Analytical thinker",
-    description: "Converte ideias abstractas em soluções de software concretas e funcionais.",
-    icon: <BrainCircuit size={22} />,
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,16 +13,25 @@ const itemVariants = {
 };
 
 export default function Differentials() {
+  const { t } = useI18n();
+  const differentials = [
+    { id: "production-grade", ...t.differentials.items[0], icon: <Zap size={22} /> },
+    { id: "business-context", ...t.differentials.items[1], icon: <Briefcase size={22} /> },
+    { id: "system-design", ...t.differentials.items[2], icon: <Settings size={22} /> },
+    { id: "true-fullstack", ...t.differentials.items[3], icon: <Layers size={22} /> },
+    { id: "analytical-thinker", ...t.differentials.items[4], icon: <BrainCircuit size={22} /> },
+  ];
+
   return (
-    <section aria-label="Diferenciais" className="py-20 sm:py-28 lg:py-32 relative">
+    <section aria-label={t.differentials.ariaLabel} className="py-20 sm:py-28 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">Diferenciais</p>
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.differentials.eyebrow}</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">
-            Why Francisco stands out
+            {t.differentials.title}
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground">
-            Mais do que um programador. Um parceiro na construção de produtos digitais que escalam e performam.
+            {t.differentials.description}
           </p>
         </div>
 
@@ -62,7 +44,7 @@ export default function Differentials() {
         >
           {differentials.map((item) => (
             <motion.div
-              key={item.title}
+              key={item.id}
               variants={itemVariants}
               className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-secondary/20 border border-border flex flex-col items-start hover:bg-secondary/40 hover:border-primary/30 transition-all"
             >

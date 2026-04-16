@@ -23,6 +23,7 @@ ARG MONGODB_COLLECTION_NAME=contact_submissions
 ARG RESEND_API_KEY=""
 ARG RESEND_FROM_EMAIL="Francisco Inoque <hello@franciscoinoque.site>"
 ARG ADMIN_NOTIFICATION_EMAIL=jaimeinoque20@gmail.com
+ARG SITE_URL="https://savanapoint-francisco-inoque.kwbhel.easypanel.host/"
 ARG GIT_SHA=local
 
 ENV NODE_ENV=production
@@ -33,6 +34,7 @@ ENV MONGODB_COLLECTION_NAME=${MONGODB_COLLECTION_NAME}
 ENV RESEND_API_KEY=${RESEND_API_KEY}
 ENV RESEND_FROM_EMAIL=${RESEND_FROM_EMAIL}
 ENV ADMIN_NOTIFICATION_EMAIL=${ADMIN_NOTIFICATION_EMAIL}
+ENV SITE_URL=${SITE_URL}
 ENV GIT_SHA=${GIT_SHA}
 
 COPY --from=deps /app/node_modules ./node_modules

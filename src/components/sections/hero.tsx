@@ -1,23 +1,38 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Terminal } from "lucide-react";
-import profilePhoto from "@assets/Design_sem_nome_1776225035203.png";
-
-const stack = ["Node.js", "React", "SaaS", "Fintech", "Automation", "Real-time"];
+import { useI18n } from "@/lib/i18n";
 
 export default function Hero() {
+  const { t } = useI18n();
+  const stack = t.hero.stack;
+  const floatingTechs = [
+    {
+      name: "Nest.js",
+      className:
+        "hidden md:block absolute left-6 top-10 rounded-xl border border-primary/25 bg-card/90 px-3 py-2 text-xs font-semibold text-primary shadow-xl backdrop-blur-sm",
+    },
+    {
+      name: "Go",
+      className:
+        "hidden lg:block absolute -left-2 bottom-8 rounded-xl border border-primary/25 bg-card/90 px-3 py-2 text-xs font-semibold text-primary shadow-xl backdrop-blur-sm",
+    },
+    {
+      name: "Expo",
+      className:
+        "hidden md:block absolute right-6 top-24 rounded-xl border border-primary/25 bg-card/90 px-3 py-2 text-xs font-semibold text-primary shadow-xl backdrop-blur-sm",
+    },
+  ];
+
   return (
     <section
       id="home"
-      aria-label="Apresentação"
+      aria-label={t.hero.ariaLabel}
       className="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden"
     >
       {/* Background glows */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] bg-primary/15 rounded-full blur-[100px] sm:blur-[140px] opacity-60 pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] bg-primary/10 rounded-full blur-[80px] sm:blur-[100px] opacity-50 pointer-events-none" />
-
-      {/* Grid texture */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] sm:bg-[size:64px_64px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] bg-primary/18 dark:bg-primary/15 rounded-full blur-[100px] sm:blur-[140px] opacity-70 dark:opacity-60 pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] bg-primary/12 dark:bg-primary/10 rounded-full blur-[80px] sm:blur-[100px] opacity-60 dark:opacity-50 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 py-12 lg:py-16 min-h-[calc(100dvh-80px)]">
@@ -34,7 +49,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               </span>
               <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-muted-foreground">
-                Available for opportunities
+                {t.hero.availability}
               </span>
             </motion.div>
 
@@ -55,7 +70,7 @@ export default function Hero() {
               className="mb-5"
             >
               <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-muted-foreground tracking-tight">
-                Fullstack Developer
+                {t.hero.role}
               </span>
             </motion.div>
 
@@ -65,7 +80,7 @@ export default function Hero() {
               transition={{ duration: 0.45, delay: 0.18 }}
               className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              Construo plataformas digitais, sistemas escaláveis e soluções que automatizam negócios.
+              {t.hero.summary}
             </motion.p>
 
             <motion.div
@@ -97,7 +112,7 @@ export default function Hero() {
                 asChild
               >
                 <a href="#projects">
-                  Ver Projetos
+                  {t.hero.primaryCta}
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </a>
               </Button>
@@ -107,7 +122,7 @@ export default function Hero() {
                 className="rounded-full h-12 sm:h-14 px-7 sm:px-8 text-sm sm:text-base border-border hover:bg-secondary hover:border-primary/40 transition-all w-full sm:w-auto"
                 asChild
               >
-                <a href="#contact">Entrar em Contacto</a>
+                <a href="#contact">{t.hero.secondaryCta}</a>
               </Button>
             </motion.div>
           </div>
@@ -123,16 +138,17 @@ export default function Hero() {
               {/* Outer ring */}
               <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-primary/20 animate-pulse" />
               {/* Glow */}
-              <div className="absolute -inset-5 sm:-inset-6 rounded-full bg-primary/10 blur-2xl" />
+              <div className="absolute -inset-5 sm:-inset-6 rounded-full bg-primary/15 dark:bg-primary/10 blur-2xl" />
 
-              {/* Photo circle */}
-              <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-primary/40 shadow-2xl shadow-primary/20">
+              {/* Profile circle */}
+              <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-primary/40 shadow-2xl shadow-primary/20 bg-gradient-to-br from-primary/30 via-background to-primary/10">
                 <img
-                  src={profilePhoto}
-                  alt="Francisco Inoque — Fullstack Developer"
-                  className="w-full h-full object-cover object-top"
+                  src="/profile.png"
+                  alt="Francisco Inoque"
+                  className="h-full w-full object-cover object-top scale-[1.03]"
                   loading="eager"
                 />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.26),transparent_38%),linear-gradient(180deg,transparent_35%,rgba(0,0,0,0.12)_100%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_42%),linear-gradient(180deg,transparent_35%,rgba(0,0,0,0.28)_100%)]" />
               </div>
 
               {/* Floating badge — Node.js */}
@@ -142,7 +158,7 @@ export default function Hero() {
                 className="absolute -left-2 sm:-left-4 top-1/4 bg-card border border-border rounded-xl sm:rounded-2xl px-3 py-1.5 sm:px-4 sm:py-2 shadow-xl backdrop-blur-sm"
               >
                 <span className="text-xs font-semibold text-primary">Node.js</span>
-                <div className="text-xs text-muted-foreground">Backend</div>
+                <div className="text-xs text-muted-foreground">{t.hero.backend}</div>
               </motion.div>
 
               {/* Floating badge — React */}
@@ -152,7 +168,7 @@ export default function Hero() {
                 className="absolute -right-2 sm:-right-4 bottom-1/4 bg-card border border-border rounded-xl sm:rounded-2xl px-3 py-1.5 sm:px-4 sm:py-2 shadow-xl backdrop-blur-sm"
               >
                 <span className="text-xs font-semibold text-primary">React</span>
-                <div className="text-xs text-muted-foreground">Frontend</div>
+                <div className="text-xs text-muted-foreground">{t.hero.frontend}</div>
               </motion.div>
 
               {/* Floating tag — SaaS */}
@@ -161,8 +177,24 @@ export default function Hero() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className="absolute -right-1 top-3 sm:-right-2 sm:top-4 bg-primary rounded-xl px-2.5 py-1 sm:px-3 sm:py-1.5 shadow-lg shadow-primary/30"
               >
-                <span className="text-xs font-bold text-primary-foreground">SaaS Builder</span>
+                <span className="text-xs font-bold text-primary-foreground">{t.hero.saasBuilder}</span>
               </motion.div>
+
+              {floatingTechs.map((tech, index) => (
+                <motion.div
+                  key={tech.name}
+                  animate={{ y: [0, index % 2 === 0 ? -6 : 6, 0] }}
+                  transition={{
+                    duration: 3.2 + index * 0.45,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.35 * index,
+                  }}
+                  className={tech.className}
+                >
+                  {tech.name}
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 

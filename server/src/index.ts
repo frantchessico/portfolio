@@ -84,6 +84,9 @@ const resendFromEmail =
   "Francisco Inoque <hello@franciscoinoque.site>";
 const adminNotificationEmail =
   process.env.ADMIN_NOTIFICATION_EMAIL ?? "jaimeinoque20@gmail.com";
+const siteUrl =
+  process.env.SITE_URL ??
+  "https://savanapoint-francisco-inoque.kwbhel.easypanel.host/";
 const countryNames = new Intl.DisplayNames(["en"], { type: "region" });
 
 let mongoClientPromise: Promise<MongoClient> | undefined;
@@ -229,7 +232,7 @@ function buildAdminEmailHtml(submission: ContactSubmissionPayload): string {
     <div style="font-family:Inter,Arial,sans-serif;background:#f5f5f4;padding:24px;color:#111827;">
       <div style="max-width:720px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
         <h1 style="margin:0 0 16px;font-size:24px;">New portfolio contact submission</h1>
-        <p style="margin:0 0 24px;color:#57534e;">A new lead was submitted through franciscoinoque.site.</p>
+        <p style="margin:0 0 24px;color:#57534e;">A new lead was submitted through ${escapeHtml(siteUrl)}.</p>
         <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">${tableRows}</table>
         <div style="padding:18px 20px;border-radius:18px;background:#0c0a09;color:#fafaf9;">
           <h2 style="margin:0 0 10px;font-size:16px;">Project details</h2>

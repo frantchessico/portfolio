@@ -2,44 +2,21 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
-const projects = [
-  {
-    title: "Waza Cursos",
-    category: "Edtech Platform",
-    description: "Plataforma de cursos online com conteúdo gratuito e pago, checkout, subscrições e arquitectura escalável.",
-    problem: "Necessidade de uma plataforma fiável para hospedar conteúdo educacional, gerir subscrições e proporcionar uma experiência de aprendizagem de qualidade.",
-    stack: ["React", "Node.js", "MongoDB", "Payment Gateway"],
-    value: "Processamento seguro de subscrições com escalabilidade para suportar um crescente número de alunos simultâneos.",
-  },
-  {
-    title: "Gênesis",
-    category: "Fintech / Payments",
-    description: "Fintech com depósitos, levantamentos, transferências, lógica de comissões e arquitectura para operações financeiras.",
-    problem: "Backend altamente seguro e ACID-compliant para operações financeiras em tempo real e estruturas complexas de comissões.",
-    stack: ["TypeScript", "Node.js", "PostgreSQL", "Microservices"],
-    value: "Core transaccional robusto com zero perda de dados e comissões automáticas multi-nível.",
-  },
-  {
-    title: "Metigan",
-    category: "SaaS / Email Marketing",
-    description: "Plataforma SaaS de email marketing e comunicação transaccional — automação, APIs e alta entregabilidade.",
-    problem: "Empresas precisavam de uma forma automatizada de gerir emails em massa e transaccionais com alta entregabilidade e integração simples por API.",
-    stack: ["React", "Go", "Redis", "Message Queues"],
-    value: "Infraestrutura de comunicação escalável capaz de processar milhões de emails com analytics detalhados e fluxos automatizados.",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export default function Projects() {
+  const { t } = useI18n();
+  const projects = t.projects.items;
+
   return (
-    <section id="projects" aria-label="Projectos em destaque" className="py-20 sm:py-28 lg:py-32 relative">
+    <section id="projects" aria-label={t.projects.ariaLabel} className="py-20 sm:py-28 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-4">
           <div className="max-w-2xl">
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">Trabalho seleccionado</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">Selected Work</h2>
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.projects.eyebrow}</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">{t.projects.title}</h2>
             <p className="text-base sm:text-lg text-muted-foreground">
-              Plataformas reais, construídas para produção. Não apenas conceitos, mas software funcional que resolve necessidades reais de negócio.
+              {t.projects.description}
             </p>
           </div>
         </div>
@@ -74,7 +51,7 @@ export default function Projects() {
                     asChild
                   >
                     <a href="#contact">
-                      Ver Detalhes
+                      {t.projects.detailsCta}
                       <ExternalLink size={14} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
                     </a>
                   </Button>
@@ -86,11 +63,11 @@ export default function Projects() {
 
                 <div className="grid sm:grid-cols-2 gap-5 sm:gap-8 mb-6 sm:mb-8">
                   <div>
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 sm:mb-3">O Desafio</h4>
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 sm:mb-3">{t.projects.challenge}</h4>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{project.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 sm:mb-3">Valor de Negócio</h4>
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 sm:mb-3">{t.projects.businessValue}</h4>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{project.value}</p>
                   </div>
                 </div>

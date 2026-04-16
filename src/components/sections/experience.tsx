@@ -1,34 +1,17 @@
 import { motion } from "framer-motion";
-
-const experiences = [
-  {
-    role: "Fundador & Desenvolvedor",
-    company: "Waza Cursos",
-    type: "Edtech",
-    description: "Construiu e lançou uma plataforma edtech de raiz, gerindo toda a stack desde o design da base de dados até à experiência frontend e integrações de pagamento.",
-  },
-  {
-    role: "Desenvolvedor",
-    company: "Gênesis",
-    type: "Fintech",
-    description: "Desenvolveu as operações financeiras core e sistemas de transacção. Engenharia de serviços backend de alta fiabilidade para processar depósitos, levantamentos e lógica de transferências complexa.",
-  },
-  {
-    role: "Fundador & Desenvolvedor",
-    company: "Metigan",
-    type: "SaaS",
-    description: "Construiu e escalou uma plataforma SaaS de email marketing. Arquitectou a infraestrutura para entrega de emails em alto volume, fluxos automatizados e APIs abrangentes.",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export default function Experience() {
+  const { t } = useI18n();
+  const experiences = t.experience.items;
+
   return (
-    <section id="experience" aria-label="Experiência profissional" className="py-20 sm:py-28 lg:py-32 bg-secondary/30 relative border-y border-border">
+    <section id="experience" aria-label={t.experience.ariaLabel} className="py-20 sm:py-28 lg:py-32 bg-secondary/30 relative border-y border-border">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 sm:mb-16">
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">Percurso</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">Experience &amp; Journey</h2>
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.experience.eyebrow}</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">{t.experience.title}</h2>
           </div>
 
           <div className="relative">

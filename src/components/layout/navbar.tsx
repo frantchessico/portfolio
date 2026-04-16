@@ -2,17 +2,11 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { name: "Início", href: "#home" },
-  { name: "Sobre", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projetos", href: "#projects" },
-  { name: "Experiência", href: "#experience" },
-  { name: "Contacto", href: "#contact" },
-];
+import SiteControls from "@/components/layout/site-controls";
+import { useI18n } from "@/lib/i18n";
 
 export default function Navbar() {
+  const { t } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -30,6 +24,7 @@ export default function Navbar() {
   }, []);
 
   const handleLinkClick = () => setMobileMenuOpen(false);
+  const navLinks = t.nav.links;
 
   return (
     <header
@@ -40,19 +35,20 @@ export default function Navbar() {
       }`}
     >
       <nav
-        aria-label="Navegação principal"
+        aria-label={t.nav.ariaLabel}
         className="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between"
       >
         <a
           href="#home"
           className="text-xl sm:text-2xl font-bold tracking-tighter hover:text-primary transition-colors"
-          aria-label="Francisco Inoque — início"
+          aria-label={t.nav.homeLabel}
         >
           FI<span className="text-primary">.</span>
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-5 lg:gap-6">
+        <div className="hidden md:flex items-center gap-3 lg:gap-4">
+          <ul className="flex items-center gap-5 lg:gap-6">
           {navLinks.map((link) => (
             <li key={link.name}>
               <a
@@ -63,18 +59,19 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li>
-            <Button asChild variant="default" className="rounded-full px-5 h-9 text-sm">
-              <a href="mailto:franciscoinoque@gmail.com">Contactar</a>
-            </Button>
-          </li>
-        </ul>
+          </ul>
+          <SiteControls showLanguage={false} />
+          <Button asChild variant="default" className="rounded-full px-5 h-9 text-sm">
+            <a href="#contact">{t.nav.cta}</a>
+          </Button>
+          <SiteControls showTheme={false} />
+        </div>
 
         {/* Mobile Toggle */}
         <button
           className="md:hidden text-foreground p-2 -mr-2 rounded-lg hover:bg-secondary transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-label={mobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -105,11 +102,13 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
+              <SiteControls mobile showLanguage={false} />
               <Button asChild className="w-full rounded-full">
-                <a href="mailto:franciscoinoque@gmail.com" onClick={handleLinkClick}>
-                  Contactar
+                <a href="#contact" onClick={handleLinkClick}>
+                  {t.nav.cta}
                 </a>
               </Button>
+              <SiteControls mobile showTheme={false} />
             </div>
           </motion.div>
         )}

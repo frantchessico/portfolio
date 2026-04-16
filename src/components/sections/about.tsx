@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
 import { User, Code2, Cpu, Rocket, GitBranch } from "lucide-react";
-
-const highlights = [
-  { text: "Fullstack Development", icon: <Code2 size={20} /> },
-  { text: "API Design", icon: <GitBranch size={20} /> },
-  { text: "SaaS Architecture", icon: <Cpu size={20} /> },
-  { text: "Product Thinking", icon: <User size={20} /> },
-  { text: "Process Automation", icon: <Rocket size={20} /> },
-];
+import { useI18n } from "@/lib/i18n";
 
 export default function About() {
+  const { t } = useI18n();
+  const highlights = [
+    { text: t.about.highlights[0], icon: <Code2 size={20} /> },
+    { text: t.about.highlights[1], icon: <GitBranch size={20} /> },
+    { text: t.about.highlights[2], icon: <Cpu size={20} /> },
+    { text: t.about.highlights[3], icon: <User size={20} /> },
+    { text: t.about.highlights[4], icon: <Rocket size={20} /> },
+  ];
+
   return (
-    <section id="about" aria-label="Sobre mim" className="py-20 sm:py-28 lg:py-32 relative">
+    <section id="about" aria-label={t.about.ariaLabel} className="py-20 sm:py-28 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
@@ -20,18 +22,15 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55 }}
           >
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">Sobre mim</p>
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.about.eyebrow}</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-6 sm:mb-8">
-              Beyond just code.<br />
-              <span className="text-muted-foreground">Building products.</span>
+              {t.about.titleTop}<br />
+              <span className="text-muted-foreground">{t.about.titleBottom}</span>
             </h2>
             <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              <p>
-                Francisco é desenvolvedor fullstack e construtor de produtos digitais, com experiência em plataformas reais — desde edtech e fintech até SaaS e automação de processos.
-              </p>
-              <p>
-                Trabalha em toda a stack, do backend aos UIs mais polidos, e compreende tanto a tecnologia como o negócio por trás dela. O objectivo não é escrever código, é entregar software escalável e confiável que resolve problemas reais.
-              </p>
+              {t.about.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </motion.div>
 

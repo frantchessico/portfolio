@@ -50,34 +50,35 @@
 }
 
 :root {
-  --background: 20 8% 4%;
-  --foreground: 30 10% 97%;
-  --border: 20 8% 13%;
-  --card: 20 8% 7%;
-  --card-foreground: 30 10% 97%;
-  --card-border: 20 8% 13%;
-  --sidebar: 20 8% 4%;
-  --sidebar-foreground: 30 10% 97%;
-  --sidebar-border: 20 8% 13%;
+  color-scheme: light;
+  --background: 32 42% 98%;
+  --foreground: 24 16% 11%;
+  --border: 28 20% 84%;
+  --card: 0 0% 100%;
+  --card-foreground: 24 16% 11%;
+  --card-border: 28 20% 84%;
+  --sidebar: 32 42% 98%;
+  --sidebar-foreground: 24 16% 11%;
+  --sidebar-border: 28 20% 84%;
   --sidebar-primary: 22 100% 54%;
-  --sidebar-primary-foreground: 0 0% 5%;
-  --sidebar-accent: 20 8% 13%;
-  --sidebar-accent-foreground: 30 10% 97%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 33 38% 94%;
+  --sidebar-accent-foreground: 24 16% 11%;
   --sidebar-ring: 22 100% 54%;
-  --popover: 20 8% 4%;
-  --popover-foreground: 30 10% 97%;
-  --popover-border: 20 8% 13%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 24 16% 11%;
+  --popover-border: 28 20% 84%;
   --primary: 22 100% 54%;
-  --primary-foreground: 0 0% 5%;
-  --secondary: 20 8% 13%;
-  --secondary-foreground: 30 10% 97%;
-  --muted: 20 8% 13%;
-  --muted-foreground: 20 5% 60%;
-  --accent: 22 100% 54%;
-  --accent-foreground: 0 0% 5%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 33 38% 94%;
+  --secondary-foreground: 24 16% 11%;
+  --muted: 33 38% 94%;
+  --muted-foreground: 24 8% 39%;
+  --accent: 22 100% 95%;
+  --accent-foreground: 24 16% 11%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --input: 20 8% 13%;
+  --input: 28 20% 84%;
   --ring: 22 100% 54%;
 
   --app-font-sans: 'Inter', sans-serif;
@@ -85,9 +86,15 @@
   --app-font-mono: Menlo, monospace;
   --radius: .5rem; 
   --spacing: 0.25rem;
+  --page-grid-color: rgba(61, 43, 31, 0.06);
+  --page-glow-left: rgba(255, 111, 61, 0.16);
+  --page-glow-right: rgba(255, 182, 140, 0.18);
+  --page-vignette: rgba(255, 247, 241, 0.94);
+  --card-grid-color: rgba(61, 43, 31, 0.05);
 }
 
 .dark {
+  color-scheme: dark;
   --background: 20 8% 4%;
   --foreground: 30 10% 97%;
   --border: 20 8% 13%;
@@ -117,6 +124,11 @@
   --destructive-foreground: 0 0% 98%;
   --input: 20 8% 13%;
   --ring: 22 100% 54%;
+  --page-grid-color: rgba(255, 255, 255, 0.04);
+  --page-glow-left: rgba(255, 98, 45, 0.12);
+  --page-glow-right: rgba(255, 124, 76, 0.08);
+  --page-vignette: rgba(13, 10, 9, 0.9);
+  --card-grid-color: rgba(255, 255, 255, 0.025);
 }
 
 @layer base {
@@ -130,6 +142,42 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  body,
+  #root {
+    min-height: 100dvh;
+  }
+
+  .page-shell {
+    position: relative;
+    isolation: isolate;
+    background-color: hsl(var(--background));
+  }
+
+  .page-shell::before,
+  .page-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .page-shell::before {
+    background:
+      radial-gradient(circle at 12% 24%, var(--page-glow-left), transparent 30%),
+      radial-gradient(circle at 82% 26%, var(--page-glow-right), transparent 24%),
+      linear-gradient(180deg, transparent 0%, var(--page-vignette) 100%);
+    z-index: 0;
+  }
+
+  .page-shell::after {
+    background-image:
+      linear-gradient(var(--page-grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--page-grid-color) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.45) 70%, transparent 100%);
+    z-index: 0;
   }
 }
 

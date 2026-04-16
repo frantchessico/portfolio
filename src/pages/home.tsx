@@ -11,18 +11,20 @@ import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <div className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/30">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Differentials />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="page-shell min-h-[100dvh] bg-background text-foreground selection:bg-primary/30">
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Differentials />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
