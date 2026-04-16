@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, Briefcase, Settings, Layers, BrainCircuit } from "lucide-react";
+import { Zap, Briefcase, Settings, Layers, BrainCircuit, ArrowUpRight } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const containerVariants = {
@@ -14,13 +14,16 @@ const itemVariants = {
 
 export default function Differentials() {
   const { t } = useI18n();
-  const differentials = [
-    { id: "production-grade", ...t.differentials.items[0], icon: <Zap size={22} /> },
-    { id: "business-context", ...t.differentials.items[1], icon: <Briefcase size={22} /> },
-    { id: "system-design", ...t.differentials.items[2], icon: <Settings size={22} /> },
-    { id: "true-fullstack", ...t.differentials.items[3], icon: <Layers size={22} /> },
-    { id: "analytical-thinker", ...t.differentials.items[4], icon: <BrainCircuit size={22} /> },
-  ];
+  const icons = [Zap, Briefcase, Settings, Layers, BrainCircuit, ArrowUpRight];
+  const differentials = t.differentials.items.map((item, index) => {
+    const Icon = icons[index % icons.length];
+
+    return {
+      id: `${item.title}-${index}`,
+      ...item,
+      icon: <Icon size={22} />,
+    };
+  });
 
   return (
     <section aria-label={t.differentials.ariaLabel} className="py-20 sm:py-28 lg:py-32 relative">

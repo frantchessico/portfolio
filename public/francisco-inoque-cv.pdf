@@ -1,0 +1,85 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1190 >>
+stream
+BT
+/F1 22 Tf
+50 790 Td
+(Francisco Inoque) Tj
+0 -28 Td
+/F1 12 Tf
+(Fullstack Developer | TypeScript, Go, Python, Java) Tj
+0 -18 Td
+/F1 11 Tf
+(Email: hello@franciscoinoque.site) Tj
+0 -15 Td
+(LinkedIn: https://www.linkedin.com/in/francisco-inoque) Tj
+0 -15 Td
+(GitHub: https://github.com/frantchessico) Tj
+0 -15 Td
+(X: https://x.com/Franciscolnoque) Tj
+0 -15 Td
+0 -18 Td
+0 -24 Td
+/F1 16 Tf
+(Summary) Tj
+0 -18 Td
+/F1 11 Tf
+(Builds SaaS platforms, financial systems, and scalable digital products.) Tj
+0 -15 Td
+(Focused on performance, automation, and business impact.) Tj
+0 -15 Td
+0 -18 Td
+0 -24 Td
+/F1 16 Tf
+(Experience) Tj
+0 -18 Td
+/F1 11 Tf
+(Founder & Developer - Waza Cursos) Tj
+0 -15 Td
+(Developer - Genesis) Tj
+0 -15 Td
+(Founder & Developer - Metigan) Tj
+0 -15 Td
+0 -18 Td
+0 -24 Td
+/F1 16 Tf
+(Core Skills) Tj
+0 -18 Td
+/F1 11 Tf
+(Frontend: React, Next.js, Angular, React Native, Expo, TypeScript, Vite, shadcn/ui, Material UI) Tj
+0 -15 Td
+(Backend: Node.js, Express, Fastify, Go, Python, Java) Tj
+0 -15 Td
+(Databases: MongoDB, MySQL, Microsoft SQL Server, Firebase) Tj
+0 -15 Td
+(Architecture: REST APIs, WebSockets, Docker, Microservices, Real-time Systems, API Integrations) Tj
+0 -15 Td
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1553
+%%EOF

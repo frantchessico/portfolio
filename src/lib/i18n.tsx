@@ -14,17 +14,18 @@ const messages = {
   en: {
     meta: {
       lang: "en",
-      title: "Francisco Inoque - Fullstack Developer | Node.js, React, SaaS",
+      title: "Francisco Inoque - Fullstack Developer | TypeScript, Go, Python, Java",
       description:
-        "Francisco Inoque is a fullstack developer building scalable platforms across SaaS, fintech, and automation with Node.js and React.",
+        "Francisco Inoque is a fullstack developer building SaaS platforms, financial systems, and scalable digital products oriented around business impact.",
       keywords:
-        "Francisco Inoque, Fullstack Developer, Node.js, React, SaaS, Fintech, Automation, Software Engineer",
+        "Francisco Inoque, Fullstack Developer, TypeScript, Go, Python, Java, SaaS, Fintech, Automation, Software Engineer",
       ogLocale: "en_US",
       siteName: "Francisco Inoque Portfolio",
     },
     controls: {
       language: "Language",
       theme: "Theme",
+      backToTop: "Back to top",
       locales: {
         en: "EN",
         "pt-BR": "PT-BR",
@@ -40,55 +41,79 @@ const messages = {
       links: [
         { name: "Home", href: "#home" },
         { name: "About", href: "#about" },
-        { name: "Skills", href: "#skills" },
+        { name: "Stack", href: "#skills" },
         { name: "Projects", href: "#projects" },
         { name: "Experience", href: "#experience" },
         { name: "Contact", href: "#contact" },
       ],
       cta: "Let's talk",
+      downloadCv: "Download CV",
+      cvDialogTitle: "Download my CV",
+      cvDialogDescription:
+        "Enter your email to unlock the CV download and receive a copy in your inbox.",
+      cvDialogNote:
+        "Your email is stored securely as a CV lead and used to send the file link.",
+      cvEmailLabel: "Email",
+      cvEmailPlaceholder: "you@example.com",
+      cvSubmit: "Download now",
+      cvSubmitting: "Preparing download...",
+      cvCancel: "Cancel",
+      cvEmailInvalid: "Please enter a valid email.",
+      cvSuccessTitle: "CV unlocked",
+      cvSuccessDescription: "Your download is starting and a copy was sent to your inbox.",
+      cvErrorTitle: "Download unavailable",
+      cvErrorDescription:
+        "I couldn't process your request right now. Please try again in a moment.",
       openMenu: "Open menu",
       closeMenu: "Close menu",
     },
     hero: {
       ariaLabel: "Introduction",
       availability: "Available for opportunities",
+      eyebrow: "Software Developer & Product Builder",
       role: "Fullstack Developer",
+      roleTechs: ["TypeScript", "Go", "Python", "Java"],
+      rotatingPhrases: [
+        "Node.js for scalable APIs",
+        "React for modern interfaces",
+        "Go for high-performance services",
+        "Python for intelligent automation",
+        "Java for robust systems",
+      ],
       summary:
-        "I build digital platforms, scalable systems, and automation solutions that move businesses forward.",
+        "I build SaaS platforms, financial systems, and scalable digital products with a focus on performance, automation, and business impact.",
       primaryCta: "View Projects",
-      secondaryCta: "Get in touch",
+      secondaryCta: "Let's talk",
       stack: [
-        "Node.js",
-        "React",
-        "Nest.js",
-        "Go",
-        "Python",
-        "Java",
-        "Expo",
-        "TypeScript",
+        "SaaS Platforms",
+        "Payment Systems",
+        "API Design",
+        "Automation",
+        "Real-time Systems",
+        "Product Thinking",
       ],
       profileBadge: "Fullstack",
       profileSummary:
-        "Building scalable digital products and automation systems.",
+        "Building scalable digital products, financial systems, and process automation.",
       backend: "Backend",
       frontend: "Frontend",
-      saasBuilder: "SaaS Builder",
+      saasBuilder: "Product Builder",
     },
     about: {
       ariaLabel: "About me",
       eyebrow: "About me",
-      titleTop: "Beyond just code.",
-      titleBottom: "Building products.",
+      titleTop: "Beyond code.",
+      titleBottom: "Building systems for business.",
       paragraphs: [
-        "Francisco is a fullstack developer and digital product builder with hands-on experience across real platforms, from edtech and fintech to SaaS and process automation.",
-        "He works across the entire stack, from backend systems to polished interfaces, with a strong understanding of both the technology and the business behind it. The goal is not just to write code, but to ship scalable, reliable software that solves real problems.",
+        "I do not just build interfaces or isolated APIs. I develop complete solutions designed to automate processes, integrate systems, scale operations, and create real impact.",
+        "My work lives at the intersection of software engineering, product, and business, turning real needs into software that is functional, reliable, and ready to grow.",
       ],
       highlights: [
-        "Fullstack Development",
-        "API Design",
-        "SaaS Architecture",
-        "Product Thinking",
-        "Process Automation",
+        "Built for scale and performance",
+        "Ready for integrations",
+        "Automation-first thinking",
+        "Product-oriented engineering",
+        "Solutions with real impact",
       ],
     },
     skills: {
@@ -96,7 +121,7 @@ const messages = {
       eyebrow: "Technical stack",
       title: "Technical Arsenal",
       description:
-        "A deep and versatile stack chosen for reliability, scalability, and performance.",
+        "Technologies and tools I use to build modern applications that are scalable, reliable, and performance-oriented.",
       groups: [
         {
           title: "Frontend",
@@ -115,11 +140,10 @@ const messages = {
         {
           title: "Backend",
           skills: [
-            "Go",
             "Node.js",
-            "Nest.js",
             "Express",
             "Fastify",
+            "Go",
             "Python",
             "Java",
           ],
@@ -129,40 +153,45 @@ const messages = {
           skills: [
             "MongoDB",
             "MySQL",
-            "PostgreSQL",
-            "Redis",
-            "FaunaDB",
             "Microsoft SQL Server",
-            "SQLite",
+            "Firebase",
           ],
         },
         {
           title: "Tools & Architecture",
           skills: [
-            "Docker",
-            "Firebase",
             "REST APIs",
             "WebSockets",
-            "Apache Kafka",
-            "AWS S3",
+            "Docker",
             "Microservices",
-            "Real-time systems",
+            "Real-time Systems",
+            "API Integrations",
           ],
         },
       ],
     },
     enterpriseIntegration: {
       ariaLabel: "Enterprise integration capabilities",
-      eyebrow: "Enterprise integration",
+      eyebrow: "Integration & architecture",
       titleTop: "Built for",
       titleBottom: "integration",
       description:
-        "Hands-on experience connecting enterprise workflows, orchestrating business processes, and translating legacy complexity into reliable digital operations.",
-      spotlightLabel: "Capability map",
-      spotlightTitle: "Enterprise-grade orchestration",
+        "I build systems prepared to connect services, automate flows, and support digital operations with consistency and scale.",
+      spotlightLabel: "Integration ecosystem",
+      spotlightTitle: "Enterprise integration layer",
       spotlightDescription:
-        "From process automation and service orchestration to functional and technical analysis, this layer helps complex systems communicate, scale, and stay governable.",
+        "Enterprise integration capabilities that help complex systems communicate, orchestrate business flows, and remain governable across legacy and modern environments.",
       stackLabel: "Core capabilities",
+      sideTitle: "Designed for scalable integrations",
+      sideDescription:
+        "Architecture shaped for service communication, process automation, dependable APIs, and systems that can evolve without operational friction.",
+      highlights: [
+        "Architecture for scalable integrations",
+        "Communication between services",
+        "Structure for process automation",
+        "Reliable API design",
+        "Systems prepared for growth",
+      ],
       items: [
         "Oracle SOA Suite",
         "Oracle Service Bus (OSB)",
@@ -176,31 +205,32 @@ const messages = {
     projects: {
       ariaLabel: "Featured projects",
       eyebrow: "Selected work",
-      title: "Selected Work",
+      title: "Featured Projects",
       description:
-        "Real platforms built for production. Not just concepts, but functional software solving real business needs.",
+        "Products and systems built with a focus on real utility, scalability, and alignment with business needs.",
       detailsCta: "Let's talk",
-      challenge: "The Challenge",
+      challenge: "What was built",
       businessValue: "Business Value",
+      stackLabel: "Stack",
       items: [
         {
           title: "Waza Cursos",
           category: "EdTech Platform",
           description:
-            "Online learning platform with free and paid content, checkout flows, subscriptions, and scalable architecture.",
+            "Online course platform focused on accessibility, digital learning, and knowledge distribution.",
           problem:
-            "A reliable platform was needed to host educational content, manage subscriptions, and deliver a strong learning experience.",
-          stack: ["React", "Node.js", "MongoDB", "Payment Gateway"],
+            "I structured a platform capable of supporting free and paid courses, with checkout, subscriptions, user management, and a foundation for product growth.",
+          stack: ["Node.js", "React", "Next.js", "MongoDB", "TypeScript"],
           value:
-            "Secure subscription processing with the scalability to support a growing number of simultaneous learners.",
+            "The project was designed to combine learning experience, technical scalability, and commercial viability within a digital education model.",
         },
         {
           title: "Genesis",
           category: "Fintech / Payments",
           description:
-            "Fintech platform with deposits, withdrawals, transfers, commission logic, and a business core engineered for high-volume financial operations.",
+            "Digital financial system focused on deposits, withdrawals, transfers, and operations designed for efficiency.",
           problem:
-            "The platform required a resilient core for financial rules, real-time transaction flows, document processing, and reliable storage across multiple data patterns.",
+            "I developed service structures and business rules to support financial operations, including commissions, transactional flows, and critical process organization.",
           stack: [
             "Go",
             "Node.js",
@@ -214,18 +244,18 @@ const messages = {
             "AWS S3",
           ],
           value:
-            "A robust financial core with business logic written in Go, Python-driven document workflows, low-latency realtime channels, and storage architecture optimized for consistency, speed, and scale.",
+            "The system was designed to support reliable, automated, and scalable operations inside a real financial context.",
         },
         {
           title: "Metigan",
           category: "SaaS / Email Marketing",
           description:
-            "SaaS email marketing and transactional communication platform with automation, APIs, and high deliverability.",
+            "Communication SaaS platform focused on email, automation, performance, and deliverability.",
           problem:
-            "Companies needed an automated way to manage bulk and transactional email with strong deliverability and easy API integration.",
-          stack: ["React", "Go", "Redis", "Message Queues"],
+            "I structured solutions for transactional email delivery, communication automation, integration APIs, and components focused on operational consistency.",
+          stack: ["Node.js", "APIs", "Automation", "Email Infrastructure", "SaaS Architecture"],
           value:
-            "Scalable communication infrastructure capable of processing millions of emails with detailed analytics and automated flows.",
+            "The project was designed to help companies communicate at scale, automate flows, and operate with greater efficiency and control.",
         },
       ],
     },
@@ -233,27 +263,29 @@ const messages = {
       ariaLabel: "Professional experience",
       eyebrow: "Journey",
       title: "Experience & Journey",
+      description:
+        "Experience shaped by real products, complete systems, and business challenges solved with software.",
       items: [
         {
           role: "Founder & Developer",
           company: "Waza Cursos",
           type: "EdTech",
           description:
-            "Built and launched an edtech platform from scratch, owning the entire stack from database design to frontend experience and payment integrations.",
+            "Technical leadership and development of an EdTech platform focused on online courses, digital monetization, user experience, and product scalability.",
         },
         {
           role: "Developer",
           company: "Genesis",
           type: "Fintech",
           description:
-            "Built core financial operations for deposits, withdrawals, transfers, and commissions, using Go for the business core, Python for document workflows, and a multi-database architecture with PostgreSQL, MongoDB, Redis, and FaunaDB.",
+            "Design and development of solutions for payments, financial operations, and process automation inside a digital system oriented toward reliability.",
         },
         {
           role: "Founder & Developer",
           company: "Metigan",
           type: "SaaS",
           description:
-            "Built and scaled an email marketing SaaS platform. Architected the infrastructure for high-volume email delivery, automation flows, and comprehensive APIs.",
+            "Creation and evolution of a communication SaaS platform integrating automation, APIs, and an operational structure built for performance and scale.",
         },
       ],
     },
@@ -262,32 +294,37 @@ const messages = {
       eyebrow: "Differentials",
       title: "Why Francisco stands out",
       description:
-        "More than a programmer. A partner in building digital products that scale and perform.",
+        "More than writing code, I work on building products and systems that connect technology, operations, and business.",
       items: [
         {
-          title: "Production-grade",
+          title: "Real products",
           description:
-            "Builds real and scalable products, not just prototypes.",
+            "Experience building platforms and systems applied to real market contexts.",
         },
         {
-          title: "Business context",
+          title: "Technical and business vision",
           description:
-            "Understands the strategic and commercial goals behind the software.",
+            "Ability to think about software through architecture, operations, utility, and measurable outcomes.",
         },
         {
-          title: "System design",
+          title: "SaaS and fintech experience",
           description:
-            "Strong experience in automation and resilient systems architecture.",
+            "Practical experience with digital products shaped by automation, monetization, and scale.",
         },
         {
-          title: "True fullstack",
+          title: "Process automation",
           description:
-            "Hands-on across backend, frontend, and product thinking in one profile.",
+            "Development of solutions that reduce manual effort and improve operational efficiency.",
         },
         {
-          title: "Analytical thinker",
+          title: "Fullstack end-to-end",
           description:
-            "Turns abstract ideas into concrete, functional software solutions.",
+            "Complete execution from frontend to backend, from user experience to business logic.",
+        },
+        {
+          title: "Analytical thinking",
+          description:
+            "Structured problem-solving for complex requirements with clarity and consistency.",
         },
       ],
     },
@@ -295,16 +332,16 @@ const messages = {
       ariaLabel: "Contact",
       eyebrow: "Contact",
       titleTop: "Let's build",
-      titleBottom: "something remarkable",
+      titleBottom: "something useful and scalable",
       description:
-        "Ready to turn your idea into a scalable, high-performance platform? Let's talk about architecture, product, and code.",
+        "I am open to opportunities, collaborations, and relevant projects. If you are looking for someone to build digital products, solid systems, and impact-oriented solutions, let's talk.",
       linkedinCta: "LinkedIn",
       emailCta: "Email me directly",
       formTitle: "Start the conversation",
       formDescription:
-        "Share a few details about your idea and I'll store it securely, send you a confirmation email, and notify my inbox right away.",
+        "Share a few details about what you are building and I will come back with context, structure, and a practical next step.",
       formNote:
-        "Your submission is saved in MongoDB, confirmed by email, and forwarded to my team via Resend.",
+        "Available for opportunities, collaborations, and meaningful new challenges.",
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",
@@ -336,7 +373,7 @@ const messages = {
       },
     },
     footer: {
-      tagline: "Fullstack Developer & Product Builder",
+      tagline: "Fullstack Developer · Digital products · Scalable systems",
       rights: "All rights reserved.",
     },
     notFound: {
@@ -347,17 +384,18 @@ const messages = {
   "pt-BR": {
     meta: {
       lang: "pt-BR",
-      title: "Francisco Inoque - Desenvolvedor Fullstack | Node.js, React, SaaS",
+      title: "Francisco Inoque - Desenvolvedor Fullstack | TypeScript, Go, Python, Java",
       description:
-        "Francisco Inoque é um desenvolvedor fullstack que constrói plataformas escaláveis em SaaS, fintech e automação com Node.js e React.",
+        "Francisco Inoque é um desenvolvedor fullstack que constrói plataformas SaaS, sistemas financeiros e produtos digitais escaláveis orientados a negócio.",
       keywords:
-        "Francisco Inoque, Desenvolvedor Fullstack, Node.js, React, SaaS, Fintech, Automação, Engenheiro de Software",
+        "Francisco Inoque, Desenvolvedor Fullstack, TypeScript, Go, Python, Java, SaaS, Fintech, Automação, Engenheiro de Software",
       ogLocale: "pt_BR",
       siteName: "Portfólio Francisco Inoque",
     },
     controls: {
       language: "Idioma",
       theme: "Tema",
+      backToTop: "Voltar ao topo",
       locales: {
         en: "EN",
         "pt-BR": "PT-BR",
@@ -373,55 +411,79 @@ const messages = {
       links: [
         { name: "Início", href: "#home" },
         { name: "Sobre", href: "#about" },
-        { name: "Skills", href: "#skills" },
+        { name: "Stack", href: "#skills" },
         { name: "Projetos", href: "#projects" },
         { name: "Experiência", href: "#experience" },
-        { name: "Contato", href: "#contact" },
+        { name: "Contacto", href: "#contact" },
       ],
       cta: "Falar comigo",
+      downloadCv: "Baixar CV",
+      cvDialogTitle: "Baixar meu CV",
+      cvDialogDescription:
+        "Informe o seu email para liberar o download do CV e receber uma cópia na sua caixa de entrada.",
+      cvDialogNote:
+        "Seu email é armazenado com segurança como lead de CV e usado para enviar o link do arquivo.",
+      cvEmailLabel: "Email",
+      cvEmailPlaceholder: "voce@exemplo.com",
+      cvSubmit: "Baixar agora",
+      cvSubmitting: "Preparando download...",
+      cvCancel: "Cancelar",
+      cvEmailInvalid: "Informe um email válido.",
+      cvSuccessTitle: "CV liberado",
+      cvSuccessDescription: "O download está a começar e uma cópia foi enviada para o seu email.",
+      cvErrorTitle: "Download indisponível",
+      cvErrorDescription:
+        "Não consegui processar o pedido agora. Tente novamente em instantes.",
       openMenu: "Abrir menu",
       closeMenu: "Fechar menu",
     },
     hero: {
       ariaLabel: "Apresentação",
       availability: "Disponível para oportunidades",
+      eyebrow: "Software Developer & Product Builder",
       role: "Desenvolvedor Fullstack",
+      roleTechs: ["TypeScript", "Go", "Python", "Java"],
+      rotatingPhrases: [
+        "Node.js para APIs escaláveis",
+        "React para interfaces modernas",
+        "Go para serviços performáticos",
+        "Python para automação inteligente",
+        "Java para sistemas robustos",
+      ],
       summary:
-        "Construo plataformas digitais, sistemas escaláveis e soluções de automação que impulsionam negócios.",
+        "Construo plataformas SaaS, sistemas financeiros e produtos digitais escaláveis, com foco em performance, automação e impacto no negócio.",
       primaryCta: "Ver projetos",
-      secondaryCta: "Entrar em contato",
+      secondaryCta: "Falar comigo",
       stack: [
-        "Node.js",
-        "React",
-        "Nest.js",
-        "Go",
-        "Python",
-        "Java",
-        "Expo",
-        "TypeScript",
+        "Plataformas SaaS",
+        "Sistemas de pagamento",
+        "Design de APIs",
+        "Automação",
+        "Sistemas em tempo real",
+        "Pensamento de produto",
       ],
       profileBadge: "Fullstack",
       profileSummary:
-        "Construindo produtos digitais escaláveis e sistemas de automação.",
+        "Construindo produtos digitais escaláveis, sistemas financeiros e automação de processos.",
       backend: "Backend",
       frontend: "Frontend",
-      saasBuilder: "Criador de SaaS",
+      saasBuilder: "Product Builder",
     },
     about: {
       ariaLabel: "Sobre mim",
       eyebrow: "Sobre mim",
       titleTop: "Além do código.",
-      titleBottom: "Construindo produtos.",
+      titleBottom: "Construindo sistemas de negócio.",
       paragraphs: [
-        "Francisco é desenvolvedor fullstack e construtor de produtos digitais, com experiência prática em plataformas reais, de edtech e fintech até SaaS e automação de processos.",
-        "Atua em toda a stack, do backend a interfaces refinadas, entendendo tanto a tecnologia quanto o negócio por trás dela. O objetivo não é apenas escrever código, mas entregar software escalável e confiável que resolve problemas reais.",
+        "Não construo apenas interfaces ou APIs isoladas. Desenvolvo soluções completas, pensadas para automatizar processos, integrar sistemas, escalar operações e gerar impacto real.",
+        "Trabalho na interseção entre engenharia de software, produto e negócio, transformando necessidades reais em software funcional, confiável e preparado para crescer.",
       ],
       highlights: [
-        "Desenvolvimento Fullstack",
-        "Design de APIs",
-        "Arquitetura SaaS",
-        "Visão de Produto",
-        "Automação de Processos",
+        "Pensado para escala e performance",
+        "Sistemas prontos para integração",
+        "Foco em automação",
+        "Engenharia orientada a produto",
+        "Soluções com impacto real",
       ],
     },
     skills: {
@@ -429,7 +491,7 @@ const messages = {
       eyebrow: "Stack técnica",
       title: "Arsenal Técnico",
       description:
-        "Uma stack profunda e versátil, escolhida por confiabilidade, escalabilidade e performance.",
+        "Tecnologias e ferramentas que utilizo para construir aplicações modernas, escaláveis e orientadas a performance.",
       groups: [
         {
           title: "Frontend",
@@ -448,11 +510,10 @@ const messages = {
         {
           title: "Backend",
           skills: [
-            "Go",
             "Node.js",
-            "Nest.js",
             "Express",
             "Fastify",
+            "Go",
             "Python",
             "Java",
           ],
@@ -462,40 +523,45 @@ const messages = {
           skills: [
             "MongoDB",
             "MySQL",
-            "PostgreSQL",
-            "Redis",
-            "FaunaDB",
             "Microsoft SQL Server",
-            "SQLite",
+            "Firebase",
           ],
         },
         {
           title: "Ferramentas & Arquitetura",
           skills: [
-            "Docker",
-            "Firebase",
             "APIs REST",
             "WebSockets",
-            "Apache Kafka",
-            "AWS S3",
+            "Docker",
             "Microsserviços",
             "Sistemas em tempo real",
+            "Integrações de API",
           ],
         },
       ],
     },
     enterpriseIntegration: {
       ariaLabel: "Capacidades de integração enterprise",
-      eyebrow: "Integração enterprise",
+      eyebrow: "Integração e arquitetura",
       titleTop: "Feito para",
       titleBottom: "integração",
       description:
-        "Experiência prática conectando workflows enterprise, orquestrando processos de negócio e traduzindo complexidade legada em operações digitais confiáveis.",
-      spotlightLabel: "Mapa de capacidade",
-      spotlightTitle: "Orquestração em nível enterprise",
+        "Desenvolvo sistemas preparados para conectar serviços, automatizar fluxos e sustentar operações digitais com consistência e escalabilidade.",
+      spotlightLabel: "Ecossistema de integração",
+      spotlightTitle: "Camada de integração enterprise",
       spotlightDescription:
-        "De automação de processos e orquestração de serviços até análise funcional e técnica, essa camada ajuda sistemas complexos a se comunicarem, escalarem e permanecerem governáveis.",
-      stackLabel: "Capacidades centrais",
+        "Capacidades de integração enterprise que ajudam sistemas complexos a comunicar, orquestrar processos de negócio e permanecer governáveis entre legados e modernos.",
+      stackLabel: "Capacidades principais",
+      sideTitle: "Pensado para integrações escaláveis",
+      sideDescription:
+        "Arquitetura desenhada para comunicação entre serviços, automação de processos, APIs confiáveis e sistemas preparados para crescer sem fricção operacional.",
+      highlights: [
+        "Arquitetura para integrações escaláveis",
+        "Comunicação entre serviços",
+        "Estrutura para automação de processos",
+        "Design de APIs confiáveis",
+        "Sistemas preparados para crescimento",
+      ],
       items: [
         "Oracle SOA Suite",
         "Oracle Service Bus (OSB)",
@@ -511,29 +577,30 @@ const messages = {
       eyebrow: "Trabalho selecionado",
       title: "Projetos em Destaque",
       description:
-        "Plataformas reais, construídas para produção. Não apenas conceitos, mas software funcional resolvendo necessidades reais de negócio.",
+        "Produtos e sistemas desenvolvidos com foco em utilidade real, escalabilidade e alinhamento com o negócio.",
       detailsCta: "Falar comigo",
-      challenge: "O desafio",
+      challenge: "O que foi construído",
       businessValue: "Valor de negócio",
+      stackLabel: "Stack",
       items: [
         {
           title: "Waza Cursos",
           category: "Plataforma EdTech",
           description:
-            "Plataforma de cursos online com conteúdo gratuito e pago, checkout, assinaturas e arquitetura escalável.",
+            "Plataforma de cursos online com foco em acessibilidade, aprendizagem digital e distribuição de conhecimento.",
           problem:
-            "Era necessária uma plataforma confiável para hospedar conteúdo educacional, gerenciar assinaturas e entregar uma experiência de aprendizagem de qualidade.",
-          stack: ["React", "Node.js", "MongoDB", "Gateway de Pagamento"],
+            "Estruturei uma plataforma capaz de suportar cursos gratuitos e pagos, com sistema de checkout, subscrição, gestão de utilizadores e base para crescimento do produto educacional.",
+          stack: ["Node.js", "React", "Next.js", "MongoDB", "TypeScript"],
           value:
-            "Processamento seguro de assinaturas com escalabilidade para suportar um número crescente de alunos simultâneos.",
+            "O projeto foi pensado para unir experiência de aprendizagem, escalabilidade técnica e viabilidade comercial dentro de um modelo digital de educação.",
         },
         {
           title: "Genesis",
           category: "Fintech / Pagamentos",
           description:
-            "Fintech com depósitos, saques, transferências, lógica de comissões e um core de negócio desenhado para operações financeiras de alto volume.",
+            "Sistema financeiro digital com foco em depósitos, levantamentos, transferências e operações orientadas a eficiência.",
           problem:
-            "Era necessário um core resiliente para regras financeiras, fluxos transacionais em tempo real, processamento documental e persistência confiável em múltiplos padrões de dados.",
+            "Desenvolvi a estrutura de serviços e regras de negócio para suportar operações financeiras, incluindo lógica de comissões, fluxos transacionais e organização de processos críticos.",
           stack: [
             "Go",
             "Node.js",
@@ -547,18 +614,18 @@ const messages = {
             "AWS S3",
           ],
           value:
-            "Core financeiro robusto com regras de negócio escritas em Go, workflows documentais em Python, canais realtime de baixa latência e arquitetura de dados otimizada para consistência, velocidade e escala.",
+            "O sistema foi desenhado para dar suporte a operações confiáveis, automatizadas e escaláveis dentro de um contexto financeiro real.",
         },
         {
           title: "Metigan",
           category: "SaaS / Email Marketing",
           description:
-            "Plataforma SaaS de email marketing e comunicação transacional com automação, APIs e alta entregabilidade.",
+            "Plataforma SaaS de comunicação e email com foco em automação, performance e entregabilidade.",
           problem:
-            "Empresas precisavam de uma forma automatizada de gerenciar emails em massa e transacionais com alta entregabilidade e integração simples por API.",
-          stack: ["React", "Go", "Redis", "Filas de Mensagens"],
+            "Estruturei soluções para envio de emails transacionais, automação de comunicação, APIs de integração e componentes voltados a consistência operacional.",
+          stack: ["Node.js", "APIs", "Automation", "Email Infrastructure", "SaaS Architecture"],
           value:
-            "Infraestrutura de comunicação escalável capaz de processar milhões de emails com analytics detalhados e fluxos automatizados.",
+            "O projeto foi orientado para ajudar empresas a comunicar em escala, automatizar fluxos e operar com mais eficiência e controle.",
         },
       ],
     },
@@ -566,27 +633,29 @@ const messages = {
       ariaLabel: "Experiência profissional",
       eyebrow: "Jornada",
       title: "Experiência & Jornada",
+      description:
+        "Experiência construída a partir de produtos reais, sistemas completos e desafios de negócio resolvidos com software.",
       items: [
         {
           role: "Fundador & Desenvolvedor",
           company: "Waza Cursos",
           type: "EdTech",
           description:
-            "Construiu e lançou uma plataforma edtech do zero, liderando toda a stack, do design do banco de dados à experiência frontend e integrações de pagamento.",
+            "Liderança técnica e desenvolvimento de uma plataforma EdTech com foco em cursos online, estrutura de monetização digital, experiência do utilizador e escalabilidade do produto.",
         },
         {
           role: "Desenvolvedor",
           company: "Genesis",
           type: "Fintech",
           description:
-            "Desenvolveu operações financeiras centrais para depósitos, saques, transferências e comissões, usando Go no core de negócio, Python para workflows documentais e uma arquitetura multi-banco com PostgreSQL, MongoDB, Redis e FaunaDB.",
+            "Concepção e desenvolvimento de soluções para pagamentos, operações financeiras e automação de processos dentro de um sistema digital orientado a confiabilidade.",
         },
         {
           role: "Fundador & Desenvolvedor",
           company: "Metigan",
           type: "SaaS",
           description:
-            "Construiu e escalou uma plataforma SaaS de email marketing. Arquitetou a infraestrutura para envio em alto volume, fluxos automatizados e APIs abrangentes.",
+            "Criação e evolução de uma plataforma SaaS de comunicação, integrando automação, APIs e estrutura operacional voltada a performance e escala.",
         },
       ],
     },
@@ -595,49 +664,54 @@ const messages = {
       eyebrow: "Diferenciais",
       title: "Por que Francisco se destaca",
       description:
-        "Mais do que um programador. Um parceiro na construção de produtos digitais que escalam e performam.",
+        "Mais do que escrever código, atuo na construção de produtos e sistemas que conectam tecnologia, operação e negócio.",
       items: [
         {
-          title: "Nível de produção",
+          title: "Produtos reais",
           description:
-            "Constrói produtos reais e escaláveis, não apenas protótipos.",
+            "Experiência na construção de plataformas e sistemas aplicados a contextos reais de mercado.",
         },
         {
-          title: "Contexto de negócio",
+          title: "Visão técnica e de negócio",
           description:
-            "Entende os objetivos estratégicos e comerciais por trás do software.",
+            "Capacidade de pensar software com foco em arquitetura, operação, utilidade e resultado.",
         },
         {
-          title: "System design",
+          title: "Experiência com SaaS e fintech",
           description:
-            "Experiência sólida em automação e arquitetura de sistemas resilientes.",
+            "Vivência prática em produtos digitais orientados a automação, monetização e escala.",
         },
         {
-          title: "Fullstack de verdade",
+          title: "Automação de processos",
           description:
-            "Atuação prática em backend, frontend e visão de produto em um só perfil.",
+            "Desenvolvimento de soluções que reduzem esforço manual e aumentam eficiência operacional.",
+        },
+        {
+          title: "Fullstack end-to-end",
+          description:
+            "Atuação completa do frontend ao backend, da experiência do utilizador à lógica de negócio.",
         },
         {
           title: "Pensamento analítico",
           description:
-            "Transforma ideias abstratas em soluções de software concretas e funcionais.",
+            "Abordagem estruturada para resolver problemas complexos com clareza e consistência.",
         },
       ],
     },
     contact: {
-      ariaLabel: "Contato",
-      eyebrow: "Contato",
+      ariaLabel: "Contacto",
+      eyebrow: "Contacto",
       titleTop: "Vamos construir",
-      titleBottom: "algo marcante",
+      titleBottom: "algo útil e escalável",
       description:
-        "Pronto para transformar sua ideia em uma plataforma escalável e de alta performance? Vamos conversar sobre arquitetura, produto e código.",
+        "Estou aberto a oportunidades, colaborações e projetos relevantes. Se você procura alguém para construir produtos digitais, sistemas sólidos e soluções orientadas a impacto, vamos conversar.",
       linkedinCta: "LinkedIn",
       emailCta: "Enviar email direto",
       formTitle: "Comece a conversa",
       formDescription:
-        "Compartilhe alguns detalhes da sua ideia e eu salvo tudo com segurança, envio um email de confirmação para você e notifico minha caixa de entrada na hora.",
+        "Compartilhe alguns detalhes do que você está a construir e eu retorno com contexto, estrutura e um próximo passo prático.",
       formNote:
-        "Sua submissão é salva no MongoDB, confirmada por email e encaminhada para minha equipe via Resend.",
+        "Disponível para oportunidades, colaborações e novos desafios relevantes.",
       form: {
         nameLabel: "Nome",
         namePlaceholder: "Seu nome",
@@ -669,7 +743,7 @@ const messages = {
       },
     },
     footer: {
-      tagline: "Desenvolvedor Fullstack & Product Builder",
+      tagline: "Desenvolvedor Fullstack · Produtos digitais · Sistemas escaláveis",
       rights: "Todos os direitos reservados.",
     },
     notFound: {

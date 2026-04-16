@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BackToTop from "@/components/layout/back-to-top";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import Hero from "@/components/sections/hero";
@@ -15,6 +16,7 @@ export default function Home() {
     <div className="page-shell min-h-[100dvh] bg-background text-foreground selection:bg-primary/30">
       <div className="relative z-10">
         <Navbar />
+        <BackToTop />
         <main>
           <Hero />
           <About />

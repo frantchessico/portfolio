@@ -86,6 +86,7 @@
     "zod": "^4.3.6"
   },
   "dependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "gsap": "^3.15.0"
   }
 }

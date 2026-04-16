@@ -72,12 +72,17 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div>
+                  <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
+                    {t.projects.stackLabel}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <span key={tech} className="px-2.5 py-1 rounded-md bg-secondary text-xs sm:text-sm font-medium text-muted-foreground">
                       {tech}
                     </span>
                   ))}
+                  </div>
                 </div>
               </div>
             </motion.article>

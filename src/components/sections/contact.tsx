@@ -102,7 +102,7 @@ export default function Contact() {
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-5 sm:mb-8 leading-[1.05]">
               {t.contact.titleTop} <br className="hidden sm:block" /> {t.contact.titleBottom}
             </h2>
-            <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
               {t.contact.description}
             </p>
 

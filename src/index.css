@@ -140,8 +140,14 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 
+  body[data-scroll-locked] {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+  }
+
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   body,

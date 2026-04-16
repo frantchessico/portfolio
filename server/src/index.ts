@@ -12,6 +12,7 @@ import { fileURLToPath } from "url";
 
 type Locale = "en" | "pt-BR";
 type ValidationField = "name" | "email" | "projectType" | "message";
+type CvLeadValidationField = "email";
 
 interface SubmissionLocation {
   ip: string;
@@ -49,6 +50,26 @@ interface ContactSubmissionRecord extends ContactSubmissionPayload {
   confirmationEmailSentAt?: Date;
 }
 
+interface CvDownloadRequestBody {
+  email?: unknown;
+  locale?: unknown;
+  source?: unknown;
+}
+
+interface CvDownloadLeadPayload {
+  email: string;
+  locale: Locale;
+  source: string;
+  userAgent: string;
+  location: SubmissionLocation;
+  createdAt: Date;
+}
+
+interface CvDownloadLeadRecord extends CvDownloadLeadPayload {
+  status: "pending_email" | "email_sent";
+  confirmationEmailSentAt?: Date;
+}
+
 interface ConfirmationContent {
   subject: string;
   html: string;
@@ -78,6 +99,8 @@ const mongoUri = process.env.MONGODB_URI;
 const mongoDbName = process.env.MONGODB_DB_NAME ?? "portfolio";
 const mongoCollectionName =
   process.env.MONGODB_COLLECTION_NAME ?? "contact_submissions";
+const mongoCvCollectionName =
+  process.env.MONGODB_CV_COLLECTION_NAME ?? "cv_download_leads";
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFromEmail =
   process.env.RESEND_FROM_EMAIL ??
@@ -228,6 +251,12 @@ function getCollection(client: MongoClient): Collection<ContactSubmissionRecord>
   );
 }
 
+function getCvLeadCollection(client: MongoClient): Collection<CvDownloadLeadRecord> {
+  return client.db(mongoDbName).collection<CvDownloadLeadRecord>(
+    mongoCvCollectionName,
+  );
+}
+
 function getResendClient(): Resend {
   if (!resendApiKey) {
     throw new Error("Missing RESEND_API_KEY environment variable.");
@@ -373,6 +402,109 @@ function buildConfirmationContent(
   };
 }
 
+function buildCvLeadAdminEmailHtml(lead: CvDownloadLeadPayload): string {
+  const rows = [
+    ["Email", lead.email],
+    ["Locale", lead.locale],
+    ["Country", lead.location.country],
+    ["Region", lead.location.region],
+    ["City", lead.location.city],
+    ["IP", lead.location.ip],
+    ["Submitted at", lead.createdAt.toLocaleString("en-US")],
+    ["Source", lead.source],
+  ] as const;
+
+  const tableRows = rows
+    .map(
+      ([label, value]) => `
+        <tr>
+          <td style="padding:10px 12px;font-weight:600;border:1px solid #e5e7eb;background:#f8fafc;">${escapeHtml(label)}</td>
+          <td style="padding:10px 12px;border:1px solid #e5e7eb;">${escapeHtml(value)}</td>
+        </tr>
+      `,
+    )
+    .join("");
+
+  return `
+    <div style="font-family:Inter,Arial,sans-serif;background:#f5f5f4;padding:24px;color:#111827;">
+      <div style="max-width:720px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
+        <h1 style="margin:0 0 16px;font-size:24px;">New CV download lead</h1>
+        <p style="margin:0 0 24px;color:#57534e;">A visitor requested Francisco Inoque's CV.</p>
+        <table style="width:100%;border-collapse:collapse;">${tableRows}</table>
+      </div>
+    </div>
+  `;
+}
+
+function buildCvLeadAdminEmailText(lead: CvDownloadLeadPayload): string {
+  return [
+    "New CV download lead",
+    "",
+    `Email: ${lead.email}`,
+    `Locale: ${lead.locale}`,
+    `Country: ${lead.location.country}`,
+    `Region: ${lead.location.region}`,
+    `City: ${lead.location.city}`,
+    `IP: ${lead.location.ip}`,
+    `Source: ${lead.source}`,
+    `Submitted at: ${lead.createdAt.toISOString()}`,
+  ].join("\n");
+}
+
+function buildCvConfirmationContent(lead: CvDownloadLeadPayload): ConfirmationContent {
+  const cvUrl = new URL("francisco-inoque-cv.pdf", siteUrl).toString();
+
+  if (lead.locale === "pt-BR") {
+    return {
+      subject: "Seu CV está pronto para download",
+      html: `
+        <div style="font-family:Inter,Arial,sans-serif;background:#f5f5f4;padding:24px;color:#111827;">
+          <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
+            <h1 style="margin:0 0 16px;font-size:24px;">Obrigado pelo interesse.</h1>
+            <p style="margin:0 0 16px;line-height:1.7;color:#57534e;">
+              Recebemos o seu pedido de CV. Você pode baixar o arquivo pelo botão abaixo sempre que precisar.
+            </p>
+            <a href="${escapeHtml(cvUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Baixar CV</a>
+            <p style="margin:20px 0 0;color:#57534e;">Francisco Inoque</p>
+          </div>
+        </div>
+      `,
+      text: [
+        "Obrigado pelo interesse.",
+        "",
+        "Recebemos o seu pedido de CV.",
+        `Baixar CV: ${cvUrl}`,
+        "",
+        "Francisco Inoque",
+      ].join("\n"),
+    };
+  }
+
+  return {
+    subject: "Your CV download is ready",
+    html: `
+      <div style="font-family:Inter,Arial,sans-serif;background:#f5f5f4;padding:24px;color:#111827;">
+        <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e7e5e4;border-radius:20px;padding:32px;">
+          <h1 style="margin:0 0 16px;font-size:24px;">Thanks for your interest.</h1>
+          <p style="margin:0 0 16px;line-height:1.7;color:#57534e;">
+            We received your CV request. You can download the file any time using the button below.
+          </p>
+          <a href="${escapeHtml(cvUrl)}" style="display:inline-block;padding:14px 22px;border-radius:999px;background:#fd6a14;color:#fff7ed;text-decoration:none;font-weight:600;">Download CV</a>
+          <p style="margin:20px 0 0;color:#57534e;">Francisco Inoque</p>
+        </div>
+      </div>
+    `,
+    text: [
+      "Thanks for your interest.",
+      "",
+      "We received your CV request.",
+      `Download CV: ${cvUrl}`,
+      "",
+      "Francisco Inoque",
+    ].join("\n"),
+  };
+}
+
 function ensureConfig(): string[] {
   const missing: string[] = [];
 
@@ -408,6 +540,23 @@ function createPayload(req: Request): ContactSubmissionPayload {
   };
 }
 
+function createCvLeadPayload(req: Request): CvDownloadLeadPayload {
+  const body = (req.body ?? {}) as CvDownloadRequestBody;
+
+  return {
+    email: readTrimmedString(body.email),
+    locale: body.locale === "pt-BR" ? "pt-BR" : "en",
+    userAgent:
+      typeof req.headers["user-agent"] === "string" ? req.headers["user-agent"] : "",
+    source:
+      typeof body.source === "string" && body.source.trim()
+        ? body.source.trim()
+        : "portfolio_cv_download",
+    location: resolveLocation(req),
+    createdAt: new Date(),
+  };
+}
+
 function validatePayload(payload: ContactSubmissionPayload): ValidationField[] {
   const validationErrors: ValidationField[] = [];
 
@@ -425,6 +574,16 @@ function validatePayload(payload: ContactSubmissionPayload): ValidationField[] {
 
   if (payload.message.length < 12) {
     validationErrors.push("message");
+  }
+
+  return validationErrors;
+}
+
+function validateCvLeadPayload(payload: CvDownloadLeadPayload): CvLeadValidationField[] {
+  const validationErrors: CvLeadValidationField[] = [];
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+    validationErrors.push("email");
   }
 
   return validationErrors;
@@ -453,6 +612,7 @@ function createApp() {
       missing,
       mongoDbName,
       mongoCollectionName,
+      mongoCvCollectionName,
       adminNotificationEmail,
     });
   });
@@ -530,6 +690,82 @@ function createApp() {
       return res.status(500).json({
         ok: false,
         message: "Failed to submit contact form.",
+      });
+    }
+  });
+
+  app.post("/api/cv-download", async (req: Request, res: Response) => {
+    const missing = ensureConfig();
+
+    if (missing.length > 0) {
+      return res.status(503).json({
+        ok: false,
+        message: "CV lead service is not configured yet. Missing environment variables.",
+        missing,
+      });
+    }
+
+    const payload = createCvLeadPayload(req);
+    const validationErrors = validateCvLeadPayload(payload);
+
+    if (validationErrors.length > 0) {
+      return res.status(400).json({
+        ok: false,
+        message: "Validation failed.",
+        fields: validationErrors,
+      });
+    }
+
+    try {
+      const client = await getMongoClient();
+      const collection = getCvLeadCollection(client);
+      const leadRecord: CvDownloadLeadRecord = {
+        ...payload,
+        status: "pending_email",
+      };
+      const insertResult = await collection.insertOne(leadRecord);
+      const resend = getResendClient();
+      const confirmation = buildCvConfirmationContent(payload);
+
+      await Promise.all([
+        resend.emails.send({
+          from: resendFromEmail,
+          to: adminNotificationEmail,
+          subject: `New CV lead (${payload.email})`,
+          html: buildCvLeadAdminEmailHtml(payload),
+          text: buildCvLeadAdminEmailText(payload),
+          replyTo: payload.email,
+        }),
+        resend.emails.send({
+          from: resendFromEmail,
+          to: payload.email,
+          subject: confirmation.subject,
+          html: confirmation.html,
+          text: confirmation.text,
+          replyTo: "hello@franciscoinoque.site",
+        }),
+      ]);
+
+      await collection.updateOne(
+        { _id: insertResult.insertedId },
+        {
+          $set: {
+            status: "email_sent",
+            confirmationEmailSentAt: new Date(),
+          },
+        },
+      );
+
+      return res.status(201).json({
+        ok: true,
+        message: "CV lead stored and emails sent.",
+      });
+    } catch (error) {
+      console.error("CV download lead failed:", error);
+
+      return res.status(500).json({
+        ok: false,
+        message: "Failed to process CV download request.",
       });
     }
   });

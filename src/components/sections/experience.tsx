@@ -12,11 +12,14 @@ export default function Experience() {
           <div className="text-center mb-10 sm:mb-16">
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary mb-4">{t.experience.eyebrow}</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">{t.experience.title}</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-base text-muted-foreground sm:text-lg">
+              {t.experience.description}
+            </p>
           </div>
 
           <div className="relative">
             {/* Timeline line — left edge on all screens */}
-            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-border" />
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-border sm:left-6" />
 
             <div className="space-y-8 sm:space-y-10">
               {experiences.map((exp, index) => (
@@ -33,14 +36,16 @@ export default function Experience() {
                     <div className="w-2.5 h-2.5 bg-primary rounded-full" />
                   </div>
 
-                  <div className="p-5 sm:p-7 rounded-2xl bg-card border border-border hover:border-primary/40 transition-colors">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
-                      <h3 className="text-lg sm:text-xl font-bold">{exp.role}</h3>
+                  <div className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/40 sm:p-7">
+                    <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 className="text-xl font-black tracking-tight sm:text-2xl">{exp.role}</h3>
+                        <span className="mt-2 block text-base font-semibold text-primary sm:text-lg">{exp.company}</span>
+                      </div>
                       <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full self-start sm:self-auto">
                         {exp.type}
                       </span>
                     </div>
-                    <span className="text-primary font-semibold text-base sm:text-lg block mb-3">{exp.company}</span>
                     <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{exp.description}</p>
                   </div>
                 </motion.div>

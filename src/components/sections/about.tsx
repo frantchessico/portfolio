@@ -41,10 +41,10 @@ export default function About() {
             transition={{ duration: 0.55, delay: 0.15 }}
             className="grid gap-3"
           >
-            {highlights.map((highlight) => (
+              {highlights.map((highlight) => (
               <div
                 key={highlight.text}
-                className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl border border-border bg-card hover:border-primary/50 hover:bg-primary/5 transition-all group"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 sm:p-5 group"
               >
                 <div className="h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0 rounded-xl bg-secondary flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                   {highlight.icon}
