@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "concurrently -k -n client,server \"yarn dev:client\" \"yarn dev:server\"",
     "dev:client": "vite --config vite.config.ts --host 0.0.0.0",
