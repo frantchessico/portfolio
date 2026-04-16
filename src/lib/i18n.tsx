@@ -272,6 +272,19 @@ const messages = {
       title: "Experience & Journey",
       description:
         "Experience shaped by real products, complete systems, and business challenges solved with software.",
+      companiesTitle: "Companies & teams",
+      companiesDescription:
+        "Professional contributions as a Fullstack Developer / Software Engineer across different products, teams, and business contexts.",
+      companies: [
+        "SavanaPoint",
+        "Fumane Films",
+        "Mawonelo",
+        "CFEP",
+        "Neshely",
+        "High Mastery Academy",
+        "Shore",
+        "Humanit",
+      ],
       items: [
         {
           role: "Founder & Developer",
@@ -649,6 +662,19 @@ const messages = {
       title: "Experiência & Jornada",
       description:
         "Experiência construída a partir de produtos reais, sistemas completos e desafios de negócio resolvidos com software.",
+      companiesTitle: "Empresas & equipas",
+      companiesDescription:
+        "Contribuições profissionais como Desenvolvedor Fullstack / Software Engineer em diferentes produtos, equipas e contextos de negócio.",
+      companies: [
+        "SavanaPoint",
+        "Fumane Films",
+        "Mawonelo",
+        "CFEP",
+        "Neshely",
+        "High Mastery Academy",
+        "Shore",
+        "Humanit",
+      ],
       items: [
         {
           role: "Fundador & Desenvolvedor",

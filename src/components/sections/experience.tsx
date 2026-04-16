@@ -52,6 +52,28 @@ export default function Experience() {
               ))}
             </div>
           </div>
+
+          <div className="mt-12 rounded-[2rem] border border-border bg-card/70 p-6 sm:mt-16 sm:p-8">
+            <div className="max-w-2xl">
+              <h3 className="text-2xl font-black tracking-tight sm:text-3xl">
+                {t.experience.companiesTitle}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {t.experience.companiesDescription}
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              {t.experience.companies.map((company) => (
+                <div
+                  key={company}
+                  className="rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/5 sm:px-5 sm:py-2.5"
+                >
+                  {company}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
