@@ -113,11 +113,11 @@ const messages = {
         {
           title: "Backend",
           skills: [
+            "Go",
             "Node.js",
             "Nest.js",
             "Express",
             "Fastify",
-            "Go",
             "Python",
             "Java",
           ],
@@ -129,6 +129,7 @@ const messages = {
             "MySQL",
             "PostgreSQL",
             "Redis",
+            "FaunaDB",
             "Microsoft SQL Server",
             "SQLite",
           ],
@@ -140,6 +141,8 @@ const messages = {
             "Firebase",
             "REST APIs",
             "WebSockets",
+            "Apache Kafka",
+            "AWS S3",
             "Microservices",
             "Real-time systems",
           ],
@@ -183,12 +186,23 @@ const messages = {
           title: "Genesis",
           category: "Fintech / Payments",
           description:
-            "Fintech platform with deposits, withdrawals, transfers, commission logic, and architecture for financial operations.",
+            "Fintech platform with deposits, withdrawals, transfers, commission logic, and a business core engineered for high-volume financial operations.",
           problem:
-            "A highly secure, ACID-compliant backend was required for real-time financial operations and complex commission structures.",
-          stack: ["TypeScript", "Node.js", "PostgreSQL", "Microservices"],
+            "The platform required a resilient core for financial rules, real-time transaction flows, document processing, and reliable storage across multiple data patterns.",
+          stack: [
+            "Go",
+            "Node.js",
+            "Python",
+            "PostgreSQL",
+            "MongoDB",
+            "Redis",
+            "FaunaDB",
+            "Apache Kafka",
+            "WebSockets",
+            "AWS S3",
+          ],
           value:
-            "A robust transactional core with zero data loss and fully automated multi-level commissions.",
+            "A robust financial core with business logic written in Go, Python-driven document workflows, low-latency realtime channels, and storage architecture optimized for consistency, speed, and scale.",
         },
         {
           title: "Metigan",
@@ -220,7 +234,7 @@ const messages = {
           company: "Genesis",
           type: "Fintech",
           description:
-            "Developed core financial operations and transaction systems. Engineered highly reliable backend services to process deposits, withdrawals, and complex transfer logic.",
+            "Built core financial operations for deposits, withdrawals, transfers, and commissions, using Go for the business core, Python for document workflows, and a multi-database architecture with PostgreSQL, MongoDB, Redis, and FaunaDB.",
         },
         {
           role: "Founder & Developer",
@@ -420,11 +434,11 @@ const messages = {
         {
           title: "Backend",
           skills: [
+            "Go",
             "Node.js",
             "Nest.js",
             "Express",
             "Fastify",
-            "Go",
             "Python",
             "Java",
           ],
@@ -436,6 +450,7 @@ const messages = {
             "MySQL",
             "PostgreSQL",
             "Redis",
+            "FaunaDB",
             "Microsoft SQL Server",
             "SQLite",
           ],
@@ -447,6 +462,8 @@ const messages = {
             "Firebase",
             "APIs REST",
             "WebSockets",
+            "Apache Kafka",
+            "AWS S3",
             "Microsserviços",
             "Sistemas em tempo real",
           ],
@@ -490,12 +507,23 @@ const messages = {
           title: "Genesis",
           category: "Fintech / Pagamentos",
           description:
-            "Fintech com depósitos, saques, transferências, lógica de comissões e arquitetura para operações financeiras.",
+            "Fintech com depósitos, saques, transferências, lógica de comissões e um core de negócio desenhado para operações financeiras de alto volume.",
           problem:
-            "Era necessário um backend altamente seguro e compatível com ACID para operações financeiras em tempo real e estruturas complexas de comissão.",
-          stack: ["TypeScript", "Node.js", "PostgreSQL", "Microsserviços"],
+            "Era necessário um core resiliente para regras financeiras, fluxos transacionais em tempo real, processamento documental e persistência confiável em múltiplos padrões de dados.",
+          stack: [
+            "Go",
+            "Node.js",
+            "Python",
+            "PostgreSQL",
+            "MongoDB",
+            "Redis",
+            "FaunaDB",
+            "Apache Kafka",
+            "WebSockets",
+            "AWS S3",
+          ],
           value:
-            "Core transacional robusto, sem perda de dados, com comissões multinível automatizadas.",
+            "Core financeiro robusto com regras de negócio escritas em Go, workflows documentais em Python, canais realtime de baixa latência e arquitetura de dados otimizada para consistência, velocidade e escala.",
         },
         {
           title: "Metigan",
@@ -527,7 +555,7 @@ const messages = {
           company: "Genesis",
           type: "Fintech",
           description:
-            "Desenvolveu operações financeiras centrais e sistemas transacionais. Projetou serviços backend de alta confiabilidade para processar depósitos, saques e lógicas complexas de transferência.",
+            "Desenvolveu operações financeiras centrais para depósitos, saques, transferências e comissões, usando Go no core de negócio, Python para workflows documentais e uma arquitetura multi-banco com PostgreSQL, MongoDB, Redis e FaunaDB.",
         },
         {
           role: "Fundador & Desenvolvedor",
