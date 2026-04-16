@@ -4,6 +4,7 @@ import express, {
   type Request,
   type Response,
 } from "express";
+import fs from "fs";
 import { MongoClient, type Collection } from "mongodb";
 import path from "path";
 import { Resend } from "resend";
@@ -59,6 +60,7 @@ const __dirname = path.dirname(__filename);
 const serverRoot = path.resolve(__dirname, "..");
 const workspaceRoot = path.resolve(serverRoot, "..");
 const clientDistDir = path.resolve(workspaceRoot, "dist/public");
+const clientIndexHtmlPath = path.join(clientDistDir, "index.html");
 
 dotenv.config({ path: path.resolve(serverRoot, ".env") });
 
@@ -478,7 +480,7 @@ function createApp() {
     }
   });
 
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== "development" && fs.existsSync(clientIndexHtmlPath)) {
     app.use(express.static(clientDistDir));
 
     app.get(
@@ -488,7 +490,7 @@ function createApp() {
           return next();
         }
 
-        return res.sendFile(path.join(clientDistDir, "index.html"));
+        return res.sendFile(clientIndexHtmlPath);
       },
     );
   }
