@@ -179,7 +179,7 @@ const messages = {
       title: "Selected Work",
       description:
         "Real platforms built for production. Not just concepts, but functional software solving real business needs.",
-      detailsCta: "View details",
+      detailsCta: "Let's talk",
       challenge: "The Challenge",
       businessValue: "Business Value",
       items: [
@@ -512,7 +512,7 @@ const messages = {
       title: "Projetos em Destaque",
       description:
         "Plataformas reais, construídas para produção. Não apenas conceitos, mas software funcional resolvendo necessidades reais de negócio.",
-      detailsCta: "Ver detalhes",
+      detailsCta: "Falar comigo",
       challenge: "O desafio",
       businessValue: "Valor de negócio",
       items: [
