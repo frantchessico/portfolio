@@ -43,15 +43,6 @@ export default function Navbar() {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isCvEmailValid = emailPattern.test(cvEmail.trim());
 
-  const triggerCvDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/francisco-inoque-cv.pdf";
-    link.download = "Francisco-Inoque-CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  };
-
   const handleOpenCvDialog = () => {
     setMobileMenuOpen(false);
     setCvDialogOpen(true);
@@ -85,7 +76,6 @@ export default function Navbar() {
         throw new Error("CV download request failed");
       }
 
-      triggerCvDownload();
       setCvDialogOpen(false);
       setCvEmail("");
       toast({

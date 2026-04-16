@@ -34,6 +34,7 @@ interface ContactRequestBody {
 }
 
 interface ContactSubmissionPayload {
+  submissionId: string;
   name: string;
   email: string;
   company: string;
@@ -58,6 +59,7 @@ interface CvDownloadRequestBody {
 }
 
 interface CvDownloadLeadPayload {
+  submissionId: string;
   email: string;
   locale: Locale;
   source: string;
@@ -334,6 +336,7 @@ function escapeHtml(value: unknown): string {
 
 function buildAdminEmailHtml(submission: ContactSubmissionPayload): string {
   const rows = [
+    ["Submission ID", submission.submissionId],
     ["Name", submission.name],
     ["Email", submission.email],
     ["Company", submission.company || "Not provided"],
@@ -376,6 +379,7 @@ function buildAdminEmailText(submission: ContactSubmissionPayload): string {
   return [
     "New portfolio contact submission",
     "",
+    `Submission ID: ${submission.submissionId}`,
     `Name: ${submission.name}`,
     `Email: ${submission.email}`,
     `Company: ${submission.company || "Not provided"}`,
@@ -462,6 +466,7 @@ function buildConfirmationContent(
 
 function buildCvLeadAdminEmailHtml(lead: CvDownloadLeadPayload): string {
   const rows = [
+    ["Submission ID", lead.submissionId],
     ["Email", lead.email],
     ["Locale", lead.locale],
     ["Country", lead.location.country],
@@ -498,6 +503,7 @@ function buildCvLeadAdminEmailText(lead: CvDownloadLeadPayload): string {
   return [
     "New CV download lead",
     "",
+    `Submission ID: ${lead.submissionId}`,
     `Email: ${lead.email}`,
     `Locale: ${lead.locale}`,
     `Country: ${lead.location.country}`,
@@ -587,6 +593,7 @@ function createPayload(req: Request): ContactSubmissionPayload {
   const body = (req.body ?? {}) as ContactRequestBody;
 
   return {
+    submissionId: randomUUID(),
     name: readTrimmedString(body.name),
     email: readTrimmedString(body.email),
     company: readTrimmedString(body.company),
@@ -608,6 +615,7 @@ function createCvLeadPayload(req: Request): CvDownloadLeadPayload {
   const body = (req.body ?? {}) as CvDownloadRequestBody;
 
   return {
+    submissionId: randomUUID(),
     email: readTrimmedString(body.email),
     locale: body.locale === "pt-BR" ? "pt-BR" : "en",
     userAgent:
@@ -725,7 +733,7 @@ function createApp() {
         resend.emails.send({
           from: resendFromEmail,
           to: adminNotificationEmail,
-          subject: `New portfolio lead: ${payload.projectType} (${payload.name})`,
+          subject: `Portfolio lead [${payload.submissionId}] ${payload.projectType} - ${payload.name}`,
           html: buildAdminEmailHtml(payload),
           text: buildAdminEmailText(payload),
           replyTo: payload.email,
@@ -804,7 +812,7 @@ function createApp() {
         resend.emails.send({
           from: resendFromEmail,
           to: adminNotificationEmail,
-          subject: `New CV lead (${payload.email})`,
+          subject: `CV lead [${payload.submissionId}] ${payload.email}`,
           html: buildCvLeadAdminEmailHtml(payload),
           text: buildCvLeadAdminEmailText(payload),
           replyTo: payload.email,
