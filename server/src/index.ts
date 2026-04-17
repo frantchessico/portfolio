@@ -667,6 +667,23 @@ function isUuid(value: string): boolean {
   );
 }
 
+function getCvAssetForLocale(locale: Locale): {
+  fileUrl: string;
+  fileName: string;
+} {
+  if (locale === "pt-BR") {
+    return {
+      fileUrl: "/francisco-inoque-cv-pt.pdf",
+      fileName: "francisco-inoque-cv-pt.pdf",
+    };
+  }
+
+  return {
+    fileUrl: "/francisco-inoque-cv-en.pdf",
+    fileName: "francisco-inoque-cv-en.pdf",
+  };
+}
+
 function createApp() {
   const app = express();
 
@@ -898,7 +915,7 @@ function createApp() {
 
       return res.status(200).json({
         ok: true,
-        fileUrl: "/francisco-inoque-cv.pdf",
+        ...getCvAssetForLocale(lead.locale),
       });
     } catch (error) {
       console.error("CV token resolve failed:", error);

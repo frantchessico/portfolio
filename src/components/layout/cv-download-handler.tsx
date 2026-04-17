@@ -4,10 +4,13 @@ import { useI18n } from "@/lib/i18n";
 
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
 
-function triggerDownload(fileUrl: string) {
+function triggerDownload(fileUrl: string, fileName?: string) {
   const link = document.createElement("a");
   link.href = fileUrl;
-  link.download = "Francisco-Inoque-CV.pdf";
+  link.download =
+    fileName ??
+    fileUrl.split("/").pop() ??
+    "Francisco-Inoque-CV.pdf";
   document.body.appendChild(link);
   link.click();
   link.remove();
@@ -43,13 +46,17 @@ export default function CvDownloadHandler() {
           throw new Error("Invalid CV token");
         }
 
-        const data = (await response.json()) as { ok?: boolean; fileUrl?: string };
+        const data = (await response.json()) as {
+          ok?: boolean;
+          fileUrl?: string;
+          fileName?: string;
+        };
 
         if (!data.ok || !data.fileUrl) {
           throw new Error("Invalid CV token");
         }
 
-        triggerDownload(data.fileUrl);
+        triggerDownload(data.fileUrl, data.fileName);
         toast({
           title: t.nav.cvSuccessTitle,
           description: t.nav.cvSuccessDescription,
