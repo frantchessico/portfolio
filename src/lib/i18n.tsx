@@ -519,7 +519,7 @@ const messages = {
       ariaLabel: "Apresentação",
       availability: "Disponível para oportunidades",
       eyebrow: "Software Developer & Product Builder",
-      role: "Desenvolvedor Fullstack",
+      role: "Fullstack Engineer",
       roleTechs: ["TypeScript", "Go", "Python", "Java"],
       rotatingPhrases: [
         "Node.js para APIs escaláveis",
