@@ -71,17 +71,17 @@ const messages = {
       ariaLabel: "Introduction",
       availability: "Available for opportunities",
       eyebrow: "Software Developer & Product Builder",
-      role: "Fullstack Developer",
+      role: "Fullstack Engineer",
       roleTechs: ["TypeScript", "Go", "Python", "Java"],
       rotatingPhrases: [
-        "Node.js for scalable APIs",
-        "React for modern interfaces",
-        "Go for high-performance services",
-        "Python for intelligent automation",
-        "Java for robust systems",
+        "Building AI-powered systems for real business problems",
+        "Automating workflows with OpenAI, Claude, Gemini and Grok",
+        "Designing scalable SaaS and financial systems",
+        "Turning data into intelligent product experiences",
+        "Engineering products from idea to scale",
       ],
       summary:
-        "I build SaaS platforms, financial systems, and scalable digital products with a focus on performance, automation, and business impact.",
+        "I build SaaS platforms, financial systems, and scalable digital products, integrating AI to automate workflows, process data, and create intelligent user experiences.",
       primaryCta: "View Projects",
       secondaryCta: "Let's talk",
       stack: [
@@ -207,6 +207,64 @@ const messages = {
         "Systems Integration",
         "Functional Analysis",
         "Technical Analysis",
+      ],
+    },
+    aiProduction: {
+      ariaLabel: "AI in production",
+      eyebrow: "AI",
+      title: "AI in Production",
+      description:
+        "Real-world Artificial Intelligence applications integrated into financial systems, SaaS platforms, and digital products.",
+      intro:
+        "I integrate language models such as OpenAI, Claude, Gemini, and Grok into real products, automating processes, analyzing data, and creating smarter experiences.",
+      status: "In production",
+      applicationLabel: "Real-world application",
+      poweredByLabel: "AI-powered",
+      focusLabel: "Focus",
+      technologiesLabel: "Technologies",
+      cards: [
+        {
+          badge: "AI",
+          title: "AI in Financial Systems",
+          description:
+            "AI applied to document processing and support for financial data analysis.",
+          bullets: [
+            "Document processing with Claude",
+            "Structured data extraction",
+            "Pattern and inconsistency detection",
+            "Support for financial validations",
+          ],
+          focus: "automation and decision support",
+          technologies: ["Claude", "Node.js", "APIs"],
+        },
+        {
+          badge: "AI",
+          title: "AI Communication Automation",
+          description:
+            "Automated communication system with intelligent content generation.",
+          bullets: [
+            "Email generation with OpenAI",
+            "Fine-tuning for personalization",
+            "Campaign automation",
+            "Message optimization",
+          ],
+          focus: "efficiency and communication scalability",
+          technologies: ["OpenAI", "APIs", "Backend services"],
+        },
+        {
+          badge: "AI",
+          title: "AI Applied to Education",
+          description:
+            "Using AI to create, structure, and support educational content.",
+          bullets: [
+            "Automatic lesson generation",
+            "Intelligent assistant for students",
+            "Quiz and exercise creation",
+            "Multiple-model usage (OpenAI, Claude, Gemini, Grok)",
+          ],
+          focus: "personalization and content scale",
+          technologies: ["OpenAI", "Claude", "Gemini", "Grok", "Next.js"],
+        },
       ],
     },
     projects: {
@@ -471,7 +529,7 @@ const messages = {
         "Java para sistemas robustos",
       ],
       summary:
-        "Construo plataformas SaaS, sistemas financeiros e produtos digitais escaláveis, com foco em performance, automação e impacto no negócio.",
+        "Desenvolvo plataformas SaaS, sistemas financeiros e produtos digitais escaláveis, utilizando IA para automatizar processos, analisar dados e criar experiências mais inteligentes para o utilizador.",
       primaryCta: "Ver projetos",
       secondaryCta: "Falar comigo",
       stack: [
@@ -597,6 +655,64 @@ const messages = {
         "Integração de Sistemas",
         "Análise Funcional",
         "Análise Técnica",
+      ],
+    },
+    aiProduction: {
+      ariaLabel: "AI em produção",
+      eyebrow: "AI",
+      title: "AI em Produção",
+      description:
+        "Aplicações reais de Inteligência Artificial integradas em sistemas financeiros, plataformas SaaS e produtos digitais.",
+      intro:
+        "Integro modelos de linguagem como OpenAI, Claude, Gemini e Grok em produtos reais, automatizando processos, analisando dados e criando experiências mais inteligentes.",
+      status: "Em produção",
+      applicationLabel: "Aplicação real",
+      poweredByLabel: "Baseado em IA",
+      focusLabel: "Foco",
+      technologiesLabel: "Tecnologias",
+      cards: [
+        {
+          badge: "AI",
+          title: "IA em Sistemas Financeiros",
+          description:
+            "Aplicação de IA para processamento de documentos e apoio à análise de dados financeiros.",
+          bullets: [
+            "Processamento de documentos com Claude",
+            "Extração de dados estruturados",
+            "Identificação de padrões e inconsistências",
+            "Apoio a validações financeiras",
+          ],
+          focus: "automação e suporte à decisão",
+          technologies: ["Claude", "Node.js", "APIs"],
+        },
+        {
+          badge: "AI",
+          title: "Automação de Comunicação com IA",
+          description:
+            "Sistema de comunicação automatizada com geração inteligente de conteúdo.",
+          bullets: [
+            "Geração de emails com OpenAI",
+            "Fine-tuning para personalização",
+            "Automação de campanhas",
+            "Otimização de mensagens",
+          ],
+          focus: "eficiência e escalabilidade de comunicação",
+          technologies: ["OpenAI", "APIs", "Backend services"],
+        },
+        {
+          badge: "AI",
+          title: "IA aplicada à Educação",
+          description:
+            "Uso de IA para criação, estruturação e suporte a conteúdos educacionais.",
+          bullets: [
+            "Geração automática de aulas",
+            "Assistente inteligente para alunos",
+            "Criação de quizzes e exercícios",
+            "Uso de múltiplos modelos (OpenAI, Claude, Gemini, Grok)",
+          ],
+          focus: "personalização e escala de conteúdo",
+          technologies: ["OpenAI", "Claude", "Gemini", "Grok", "Next.js"],
+        },
       ],
     },
     projects: {
@@ -818,9 +934,7 @@ function getInitialLocale(): Locale {
     return storedLocale;
   }
 
-  return window.navigator.language.toLowerCase().startsWith("pt")
-    ? "pt-BR"
-    : "en";
+  return "en";
 }
 
 function updateMetaTag(

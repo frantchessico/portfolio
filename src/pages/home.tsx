@@ -7,6 +7,7 @@ import Hero from "@/components/sections/hero";
 import About from "@/components/sections/about";
 import Skills from "@/components/sections/skills";
 import EnterpriseIntegration from "@/components/sections/enterprise-integration";
+import AiProduction from "@/components/sections/ai-production";
 import Projects from "@/components/sections/projects";
 import Experience from "@/components/sections/experience";
 import Differentials from "@/components/sections/differentials";
@@ -24,6 +25,7 @@ export default function Home() {
           <About />
           <Skills />
           <EnterpriseIntegration />
+          <AiProduction />
           <Projects />
           <Experience />
           <Differentials />
